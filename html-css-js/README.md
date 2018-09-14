@@ -1,14 +1,23 @@
 # Lecture on html, css, and js
 
-## html
+1. [HTML](#html)
+  1.1. [html basics](#htmlbasics)
+  2.2. [html elements](#htmlelements)
+2. [CSS](#css)
+3. [JS](#js)
+
+
+
+<a name="html"></a>
+## 1. html
 
 Reference: [W3School html](https://www.w3schools.com/html/default.asp)
 
 Create an account on [codepen](https://codepen.io/)
 
 
-
-### html basics
+<a name="htmlbasics"></a>
+### 1.1. html basics
 
 * HTML stands for Hyper Text Markup Language
 * HTML describes the structure of Web pages using markup
@@ -38,7 +47,14 @@ A typical html page has the following structure
 </html>
 ```
 
+<a name="htmlelements"></a>
+### 1.2. html elements
 
-### js scripts in html
+js scripts in html
 
 
+<a name="css"></a>
+## 2. CSS
+
+<a name="js"></a>
+## 3. JS
