@@ -1,15 +1,10 @@
 # Lecture on html, css, and js
 
 0. [Setup](#setup)
-
 1. [HTML](#html)
-
   1.1. [html basics](#htmlbasics)
-  
   2.2. [html elements](#htmlelements)
-  
 2. [CSS](#css)
-
 3. [JS](#js)
 
 
@@ -24,7 +19,7 @@ Create an account on [codepen](https://codepen.io/)
 <a name="html"></a>
 ## 1. html
 
-Reference: [W3School html](https://www.w3schools.com/html/default.asp)
+Reference: [W3School html tutorial](https://www.w3schools.com/html/default.asp)
 
 
 <a name="htmlbasics"></a>
@@ -60,6 +55,22 @@ A typical html page has the following structure
 
 <a name="htmlelements"></a>
 ### 1.2. html elements
+
+An html element usually consists of a **start tag** and **end tag**, with the content inserted in between:
+```html
+  <tagname>Content goes here...</tagname>
+```
+The html element is everything from the start tag to the end tag:
+
+Typical html elements include:
+a. <html></html> : defines the whole document
+b. <head></head> : defines the headings of the document
+c. <body></body> : defines the body/content of the document
+d. <h1></h1>, <h2></h2>, ..., <h6></h6> : define headings from large (h1) to smaller (h6)
+e. <p></p> : defines a paragraph
+f. <div></div> : defines a block
+g. 
+
 
 js scripts in html
 
