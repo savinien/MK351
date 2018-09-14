@@ -1,10 +1,23 @@
 # Lecture on html, css, and js
 
+0. [Setup](#setup)
+
 1. [HTML](#html)
+
   1.1. [html basics](#htmlbasics)
+  
   2.2. [html elements](#htmlelements)
+  
 2. [CSS](#css)
+
 3. [JS](#js)
+
+
+<a name="setup"></a>
+## Setup
+Install atom code editor [atom](https://atom.io/)
+
+Create an account on [codepen](https://codepen.io/)
 
 
 
@@ -12,8 +25,6 @@
 ## 1. html
 
 Reference: [W3School html](https://www.w3schools.com/html/default.asp)
-
-Create an account on [codepen](https://codepen.io/)
 
 
 <a name="htmlbasics"></a>
