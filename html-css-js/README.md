@@ -62,17 +62,25 @@ An html element usually consists of a **start tag** and **end tag**, with the co
 ```
 The html element is everything from the start tag to the end tag:
 
-Typical html elements include:
-- ``<html></html>`` : defines the whole document
+Some html elements:
+- `<html></html>` : defines the whole document
 - `<head></head>` : defines the headings of the document
-- ```<body></body>``` : defines the body/content of the document
+- `<body></body>` : defines the body/content of the document
 - `<h1></h1>`, `<h2></h2>`, ..., `<h6></h6>` : define headings from large (h1) to smaller (h6)
 - `<p></p>` : defines a paragraph
 - `<div></div>` : defines a block
-- 
+- ...
 
 
 js scripts in html
+
+<a name="htmlattributes"></a>
+### 1.3. html attributes
+
+* All HTML elements can have attributes
+* Attributes provide additional information about an element
+* Attributes are always specified in the start tag
+* Attributes usually come in name/value pairs like: name="value"
 
 
 <a name="css"></a>
