@@ -25,12 +25,12 @@ Reference: [W3School html tutorial](https://www.w3schools.com/html/default.asp)
 <a name="htmlbasics"></a>
 ### 1.1. html basics
 
-* HTML stands for Hyper Text Markup Language
-* HTML describes the structure of Web pages using markup
-* HTML elements are the building blocks of HTML pages
-* HTML elements are represented by tags
-* HTML tags label pieces of content such as "heading", "paragraph", "table", and so on
-* Browsers do not display the HTML tags, but use them to render the content of the page
+- HTML stands for Hyper Text Markup Language
+- HTML describes the structure of Web pages using markup
+- HTML elements are the building blocks of HTML pages
+- HTML elements are represented by tags
+- HTML tags label pieces of content such as "heading", "paragraph", "table", and so on
+- Browsers do not display the HTML tags, but use them to render the content of the page
 
 A typical html page has the following structure
 
@@ -69,7 +69,15 @@ Some html elements:
 - `<h1></h1>`, `<h2></h2>`, ..., `<h6></h6>` : define headings from large (h1) to smaller (h6)
 - `<p></p>` : defines a paragraph
 - `<div></div>` : defines a block
-- ...
+
+Unordered lists:
+```html
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  ...
+</ul>
+```
 
 
 js scripts in html
@@ -77,10 +85,31 @@ js scripts in html
 <a name="htmlattributes"></a>
 ### 1.3. html attributes
 
-* All HTML elements can have attributes
-* Attributes provide additional information about an element
-* Attributes are always specified in the start tag
-* Attributes usually come in name/value pairs like: name="value"
+- All HTML elements can have attributes
+- Attributes provide additional information about an element
+- Attributes are always specified in the start tag
+- Attributes usually come in name/value pairs like: name="value"
+
+examples of attributes: 
+- `href` : to reference a weblink
+- `style` : to style the element
+- `src` : to reference a local link
+- `width`, `height` : to define the size of the element
+
+
+```html
+<a href="http://www.em-lyon.com">this is a link to emlyon's website</a>
+
+<img src="../my_picture_folder/my_picture.jpg" width="500" height="600">
+
+<p style="color:red">this paragraph will show up in red</p>
+
+<script src="myScript.js"></script>
+
+
+```
+
+
 
 
 <a name="css"></a>
