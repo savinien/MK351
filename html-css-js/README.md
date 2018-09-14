@@ -63,13 +63,13 @@ An html element usually consists of a **start tag** and **end tag**, with the co
 The html element is everything from the start tag to the end tag:
 
 Typical html elements include:
-a. <html></html> : defines the whole document
-b. <head></head> : defines the headings of the document
-c. <body></body> : defines the body/content of the document
-d. <h1></h1>, <h2></h2>, ..., <h6></h6> : define headings from large (h1) to smaller (h6)
-e. <p></p> : defines a paragraph
-f. <div></div> : defines a block
-g. 
+- `<html></html>` : defines the whole document
+- `<head></head>` : defines the headings of the document
+- `<body></body>` : defines the body/content of the document
+- `<h1></h1>`, `<h2></h2>`, ..., `<h6></h6>` : define headings from large (h1) to smaller (h6)
+- `<p></p>` : defines a paragraph
+- `<div></div>` : defines a block
+- 
 
 
 js scripts in html
