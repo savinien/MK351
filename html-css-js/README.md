@@ -139,7 +139,7 @@ example
 <body style="background-color:powderblue;">
 
   <h1 style="color:red; font-size:300%;">This is a red heading</h1>
-  <p style="text-align: center; font-family:verdana;">This is a centered paragraph. Text in verdana font.</p>
+  <p style="text-align:center; font-family:verdana;">This is a centered paragraph. Text in verdana font.</p>
   
 </body>
 ```
@@ -346,7 +346,7 @@ So, an inline style (inside a specific HTML element) has the highest priority, w
 
 Another important behaviour of CSS style is the following: HTML elements contained within another element inherit its style. In the following example, both `text 1` and `text 2` will be centered:
 ```css
-div.mycentereddiv{
+div.mycentereddiv {
   text-align: center;
 }
 ```
