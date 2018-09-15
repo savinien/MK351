@@ -168,7 +168,7 @@ Reference: [W3School css tutorial](https://www.w3schools.com/css/default.asp)
 
 A CSS rule-set consists of a selector and a declaration block:
 
-(https://www.w3schools.com/css/selector.gif)
+![CSS selector](https://www.w3schools.com/css/selector.gif)
 
 - The selector points to the HTML element you want to style.
 
