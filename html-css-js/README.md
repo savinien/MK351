@@ -10,7 +10,7 @@
 
 <a name="setup"></a>
 ## Setup
-Install atom code editor [atom](https://atom.io/)
+Install [atom](https://atom.io/) code editor
 
 Create an account on [codepen](https://codepen.io/)
 
@@ -109,11 +109,55 @@ examples of attributes:
 
 ```
 
+<a name="htmlstyleandformating"></a>
+### 1.4. html style and formating
+
+Setting the style of an HTML element, can be done with the `style` attribute.
+
+The HTML style attribute has the following syntax:
+```html
+<tagname style="property:value;">
+```
+The property is a CSS property. The value is a CSS value.
+
+- Use `background-color` for background color
+- Use `color` for text colors
+- Use `font-family` for text fonts
+- Use `font-size` for text sizes
+- Use `text-align` for text alignment
+
+example
+```html
+<body style="background-color:powderblue;">
+
+  <h1 style="color:red; font-size:300%;">This is a red heading</h1>
+  <p style="text-align: center; font-family:verdana;">This is a centered paragraph. Text in verdana font.</p>
+  
+</body>
+```
+
+
+You can further use the following markers, to style a text: 
+- `<b></b>`: Bold text
+- `<strong></strong>`: Important text
+- `<i></i>`: Italic text
+- `<em></em>`: Emphasized text
+- `<mark></mark>`: Marked text
+- `<small></small>`: Small text
+- `<del></del>`: Deleted text
+- `<ins></ins>`: Inserted text
+- `<sub></sub>`: Subscript text
+- `<sup></sup>`: Superscript text
 
 
 
 <a name="css"></a>
 ## 2. CSS
+
+
+
+
+
 
 <a name="js"></a>
 ## 3. JS
