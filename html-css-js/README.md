@@ -8,8 +8,8 @@
   1.4. [HTM style and formating](#htmlstyleandformating)
 2. [CSS](#css)
   2.1. [CSS basics](#cssbasics)
-  2.2. [CSS syntax](csssyntax)
-  2.3. [CSS selectors](cssselector)
+  2.2. [CSS syntax](#csssyntax)
+  2.3. [CSS selectors](#cssselector)
   2.4. [CSS where to](#csswhereto)
   2.5. [Cascading over](#csscascading)
 3. [JS](#js)
@@ -294,10 +294,10 @@ An **inline style** may be used to apply a unique style for a single element.
 
 To use inline styles, add the style attribute to the relevant element. The style attribute can contain any CSS property.
 
-The example below shows how to change the color and the left margin of a <h1> element:
+The example below shows how to change the color and the left margin of an `<h1>` element:
 
 ```css
-<h1 style="color:blue;margin-left:30px;">This is a heading</h1>
+<h1 style="color:blue; margin-left:30px;">This is a heading</h1>
 ```
 
 An **internal style** sheet may be used if one single page has a unique style.
@@ -344,18 +344,13 @@ h1 {
 <a name="csscascading"></a>
 ## 2.4. Cascading over
 
-What style will be used when there is more than one style specified for an HTML element?
-
-Generally speaking we can say that all the styles will "cascade" into a new "virtual" style sheet by the following rules, where number one has the highest priority:
-
+What style will be used when there is more than one style specified for an HTML element? Generally speaking we can say that all the styles will "cascade" into a new "virtual" style sheet by the following rules, where number one has the highest priority:
 1. Inline style (inside an HTML element)
 2. External and internal style sheets (in the head section)
 3. Browser default
-
 So, an inline style (inside a specific HTML element) has the highest priority, which means that it will override a style defined inside the <head> tag, or in an external style sheet, or a browser default value.
 
-
-Another important consequence of the "cascading rule" is the following: HTML elements contained within another element inherit its style. In the following example, both `text 1` and `text 2` will be centered:
+Another important behaviour of CSS style is the following: HTML elements contained within another element inherit its style. In the following example, both `text 1` and `text 2` will be centered:
 ```css
 div.mycentereddiv{
   text-align: center;
