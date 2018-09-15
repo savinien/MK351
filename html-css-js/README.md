@@ -3,7 +3,9 @@
 0. [Setup](#setup)
 1. [HTML](#html)
   1.1. [html basics](#htmlbasics)
-  2.2. [html elements](#htmlelements)
+  1.2. [html elements](#htmlelements)
+  1.3. [html attributes](#htmlattributes)
+  1.4. [html style and formating](#htmlstyleandformating)
 2. [CSS](#css)
 3. [JS](#js)
 
@@ -91,9 +93,9 @@ js scripts in html
 - Attributes usually come in name/value pairs like: name="value"
 
 examples of attributes: 
-- `href` : to reference a weblink
+- `href` : to reference a link to a relative (local) or absolute (remote) element to redirect to
 - `style` : to style the element
-- `src` : to reference a local link
+- `src` : to reference a file path to a relative (local) or absolute (remote) element to import
 - `width`, `height` : to define the size of the element
 
 
@@ -136,7 +138,6 @@ example
 </body>
 ```
 
-
 You can further use the following markers, to style a text: 
 - `<b></b>`: Bold text
 - `<strong></strong>`: Important text
@@ -154,7 +155,7 @@ You can further use the following markers, to style a text:
 <a name="css"></a>
 ## 2. CSS
 
-
+Reference: [W3School css tutorial](https://www.w3schools.com/css/default.asp)
 
 
 
