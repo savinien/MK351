@@ -1,4 +1,4 @@
-# Lecture on html, css, and js
+# Crash course on html, css, and js
 
 0. [Setup](#setup)
 1. [HTML](#html)
