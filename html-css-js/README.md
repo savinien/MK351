@@ -2,11 +2,15 @@
 
 0. [Setup](#setup)
 1. [HTML](#html)
-  1.1. [html basics](#htmlbasics)
-  1.2. [html elements](#htmlelements)
-  1.3. [html attributes](#htmlattributes)
-  1.4. [html style and formating](#htmlstyleandformating)
+  1.1. [HTML basics](#htmlbasics)
+  1.2. [HTML elements](#htmlelements)
+  1.3. [HTM attributes](#htmlattributes)
+  1.4. [HTM style and formating](#htmlstyleandformating)
 2. [CSS](#css)
+  2.1. [CSS basics](#cssbasics)
+  2.2. [CSS syntax](csssyntax)
+  2.3. [CSS selectors](cssselector)
+  2.4. [CSS where to](#csswhereto)
 3. [JS](#js)
 
 
@@ -19,13 +23,13 @@ Create an account on [codepen](https://codepen.io/)
 
 
 <a name="html"></a>
-## 1. html
+## 1. HTML
 
-Reference: [W3School html tutorial](https://www.w3schools.com/html/default.asp)
+Reference: [W3School HTM tutorial](https://www.w3schools.com/html/default.asp)
 
 
 <a name="htmlbasics"></a>
-### 1.1. html basics
+### 1.1. HTML basics
 
 - HTML stands for Hyper Text Markup Language
 - HTML describes the structure of Web pages using markup
@@ -34,7 +38,7 @@ Reference: [W3School html tutorial](https://www.w3schools.com/html/default.asp)
 - HTML tags label pieces of content such as "heading", "paragraph", "table", and so on
 - Browsers do not display the HTML tags, but use them to render the content of the page
 
-A typical html page has the following structure
+A typical HTML page has the following structure
 
 ```html
 <!DOCTYPE html>
@@ -59,15 +63,15 @@ A typical html page has the following structure
 ```
 
 <a name="htmlelements"></a>
-### 1.2. html elements
+### 1.2. HTML elements
 
-An html element usually consists of a **start tag** and **end tag**, with the content inserted in between:
+An HTML element usually consists of a **start tag** and **end tag**, with the content inserted in between:
 ```html
   <tagname>Content goes here...</tagname>
 ```
-The html element is everything from the start tag to the end tag:
+The HTML element is everything from the start tag to the end tag:
 
-Some html elements:
+Some HTM elements:
 - `<html></html>` : defines the whole document
 - `<head></head>` : defines the headings of the document
 - `<body></body>` : defines the body/content of the document
@@ -85,10 +89,8 @@ Unordered lists:
 ```
 
 
-js scripts in html
-
 <a name="htmlattributes"></a>
-### 1.3. html attributes
+### 1.3. HTML attributes
 
 - All HTML elements can have attributes
 - Attributes provide additional information about an element
@@ -115,7 +117,7 @@ examples of attributes:
 ```
 
 <a name="htmlstyleandformating"></a>
-### 1.4. html style and formating
+### 1.4. HTML style and formating
 
 Setting the style of an HTML element, can be done with the `style` attribute.
 
@@ -160,11 +162,34 @@ You can further use the following markers, to style a text:
 
 Reference: [W3School css tutorial](https://www.w3schools.com/css/default.asp)
 
+<a name="cssbasics"></a>
+### 2.1. CSS basics
+
 - CSS stands for Cascading Style Sheets
 - CSS describes how HTML elements are to be displayed on screen, paper, or in other media
 - CSS saves a lot of work. It can control the layout of multiple web pages all at once
+- External stylesheets are stored in CSS files
 
+Typical CSS look like this
+```css
+body {
+    background-color: lightblue;
+}
 
+h1 {
+    color: white;
+    text-align: center;
+    /* this is a comment */
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+```
+
+<a name="csssyntax"></a>
+### 2.2. CSS syntax
 
 A CSS rule-set consists of a selector and a declaration block:
 
@@ -180,10 +205,155 @@ A CSS rule-set consists of a selector and a declaration block:
 
 
 
+<a name="cssselector"></a>
+### 2.3. CSS selectors
+
+CSS selectors are used to "find" (or select) HTML elements based on their element name, id, class, attribute, and more.
+
+The **element selector** selects elements based on the element name.
+
+You can select all `<p>` elements on a page like this (in this case, all `<p>` elements will be center-aligned, with a red text color):
+
+```css
+p {
+    text-align: center;
+    color: red;
+}
+```
+
+The **id selector** uses the id attribute of an HTML element to select a specific element.
+
+The id of an element should be unique within a page, so the id selector is used to select one unique element!
+
+To select an element with a specific id, write a hash (#) character, followed by the id of the element.
+
+The style rule below will be applied to the HTML element with id="para1":
+
+```css
+#para1 {
+    text-align: center;
+    color: red;
+}
+```
+
+The **class selector** selects elements with a specific class attribute.
+
+To select elements with a specific class, write a period (.) character, followed by the name of the class.
+
+In the example below, all HTML elements with class="center" will be red and center-aligned:
+
+```css
+.center {
+    text-align: center;
+    color: red;
+}
+```
+
+You can also specify that only specific HTML elements should be affected by a class.
+
+In the example below, only <p> elements with class="center" will be center-aligned:
+
+```css
+p.center {
+    text-align: center;
+    color: red;
+}
+```
+HTML elements can also refer to more than one class.
+
+In the example below, the <p> element will be styled according to class="center" and to class="large":
+
+```css
+<p class="center large">This paragraph refers to two classes.</p>
+```
+
+If you have elements with the same style definitions, like this:
+
+```css
+    text-align: center;
+    color: red;
+```
+you can group the selectors, to minimize the code:
+```css
+h1, h2, p {
+    text-align: center;
+    color: red;
+}
+```
+
+<a name="csswhereto"></a>
+### 2.3. CSS where to
+
+There are three ways of inserting a style sheet:
+- Inline style
+- Internal style sheet
+- External style sheet
+
+An **inline style** may be used to apply a unique style for a single element.
+
+To use inline styles, add the style attribute to the relevant element. The style attribute can contain any CSS property.
+
+The example below shows how to change the color and the left margin of a <h1> element:
+
+```css
+<h1 style="color:blue;margin-left:30px;">This is a heading</h1>
+```
+
+An **internal style** sheet may be used if one single page has a unique style.
+
+Internal styles are defined within the `<style>` element, inside the `<head>` section of an HTML page:
+```html
+<head>
+  <style>
+    body {
+        background-color: linen;
+    }
+
+    h1 {
+        color: maroon;
+        margin-left: 40px;
+    } 
+  </style>
+</head>
+```
 
 
+With an **external style sheet**, you can change the look of an entire website by changing just one file!
 
-- External stylesheets are stored in CSS files
+Each page must include a reference to the external style sheet file inside the <link> element. The `<link>` element goes inside the `<head>` section:
+
+```html
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+```
+Here is how the "mystyle.css" looks:
+```css
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+```
+**NB:** there is NO space between the property value and the unit (such as `margin-left: 20 px;`), the correct way is: `margin-left: 20px;`
+
+<a name="csscascading"></a>
+## 2.4. Cascading over
+
+What style will be used when there is more than one style specified for an HTML element?
+
+Generally speaking we can say that all the styles will "cascade" into a new "virtual" style sheet by the following rules, where number one has the highest priority:
+
+1. Inline style (inside an HTML element)
+2. External and internal style sheets (in the head section)
+3. Browser default
+
+So, an inline style (inside a specific HTML element) has the highest priority, which means that it will override a style defined inside the <head> tag, or in an external style sheet, or a browser default value.
+
+
 
 
 
