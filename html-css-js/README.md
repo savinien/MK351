@@ -11,6 +11,7 @@
   2.2. [CSS syntax](csssyntax)
   2.3. [CSS selectors](cssselector)
   2.4. [CSS where to](#csswhereto)
+  2.5. [Cascading over](#csscascading)
 3. [JS](#js)
 
 
@@ -201,7 +202,7 @@ A CSS rule-set consists of a selector and a declaration block:
 
 - Each declaration includes a CSS property name and a value, separated by a colon.
 
-- A CSS declaration always ends with a semicolon, and declaration blocks are surrounded by curly braces.
+- A CSS declaration always ends with a semicolon (`;`), and declaration blocks are surrounded by curly braces.
 
 
 
@@ -225,7 +226,7 @@ The **id selector** uses the id attribute of an HTML element to select a specifi
 
 The id of an element should be unique within a page, so the id selector is used to select one unique element!
 
-To select an element with a specific id, write a hash (#) character, followed by the id of the element.
+To select an element with a specific id, write a hash (`#`) character, followed by the id of the element.
 
 The style rule below will be applied to the HTML element with id="para1":
 
@@ -238,7 +239,7 @@ The style rule below will be applied to the HTML element with id="para1":
 
 The **class selector** selects elements with a specific class attribute.
 
-To select elements with a specific class, write a period (.) character, followed by the name of the class.
+To select elements with a specific class, write a period (`.`) character, followed by the name of the class.
 
 In the example below, all HTML elements with class="center" will be red and center-aligned:
 
@@ -354,7 +355,20 @@ Generally speaking we can say that all the styles will "cascade" into a new "vir
 So, an inline style (inside a specific HTML element) has the highest priority, which means that it will override a style defined inside the <head> tag, or in an external style sheet, or a browser default value.
 
 
-
+Another important consequence of the "cascading rule" is the following: HTML elements contained within another element inherit its style. In the following example, both `text 1` and `text 2` will be centered:
+```css
+div.mycentereddiv{
+  text-align: center;
+}
+```
+```html
+<div class="mycentereddiv">
+  <p>text 1</p>
+  <div>
+    <p>text 2<p>
+  </div>
+</div>
+```
 
 
 
