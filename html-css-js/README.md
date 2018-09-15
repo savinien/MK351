@@ -2,21 +2,15 @@
 
 0. [Setup](#setup)
 1. [HTML](#html)
-
   1.1. [HTML basics](#htmlbasics)
   1.2. [HTML elements](#htmlelements)
   1.3. [HTM attributes](#htmlattributes)
   1.4. [HTM style and formating](#htmlstyleandformating)
 2. [CSS](#css)
-
   2.1. [CSS basics](#cssbasics)
-  
   2.2. [CSS syntax](#csssyntax)
-  
   2.3. [CSS selectors](#cssselector)
-  
   2.4. [CSS where to](#csswhereto)
-  
   2.5. [Cascading over](#csscascading)
 3. [JS](#js)
 
@@ -283,7 +277,7 @@ h1, h2, p {
 ```
 
 <a name="csswhereto"></a>
-### 2.3. CSS where to
+### 2.4. CSS where to
 
 There are three ways of inserting a style sheet:
 - Inline style
@@ -342,7 +336,7 @@ h1 {
 **NB:** there is NO space between the property value and the unit (such as `margin-left: 20 px;`), the correct way is: `margin-left: 20px;`
 
 <a name="csscascading"></a>
-## 2.4. Cascading over
+## 2.5. Cascading over
 
 What style will be used when there is more than one style specified for an HTML element? Generally speaking we can say that all the styles will "cascade" into a new "virtual" style sheet by the following rules, where number one has the highest priority:
 1. Inline style (inside an HTML element)
