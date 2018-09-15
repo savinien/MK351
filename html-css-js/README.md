@@ -1,22 +1,17 @@
 # Lecture on html, css, and js
 
 0. [Setup](#setup)
-
 1. [HTML](#html)
-
   1.1. [HTML basics](#htmlbasics)
   1.2. [HTML elements](#htmlelements)
   1.3. [HTM attributes](#htmlattributes)
   1.4. [HTM style and formating](#htmlstyleandformating)
-
 2. [CSS](#css)
-
   2.1. [CSS basics](#cssbasics)
   2.2. [CSS syntax](#csssyntax)
   2.3. [CSS selectors](#cssselector)
   2.4. [CSS where to](#csswhereto)
   2.5. [Cascading over](#csscascading)
-
 3. [JS](#js)
 
 
