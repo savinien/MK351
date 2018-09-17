@@ -467,7 +467,7 @@ Or your js code can be **external**, *i.e.* within an external `.js` file. For i
 </body>
 </html>
 ```
-and your `script.js` contains `myFonction()`:
+and your `script.js` file contains `myFunction()`:
 ```js
 function myFunction() {
    document.getElementById("demo").innerHTML = "Paragraph changed.";
