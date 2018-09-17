@@ -367,6 +367,8 @@ div.mycentereddiv {
 <a name="js"></a>
 ## 3. JS
 
+Reference: [W3School js tutorial](https://www.w3schools.com/js/default.asp)
+
 JavaScript is the programming language of HTML and the Web.
 
 <a name="jsexamples"></a>
