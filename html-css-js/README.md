@@ -13,6 +13,8 @@
   2.4. [CSS where to](#csswhereto)
   2.5. [Cascading over](#csscascading)
 3. [JS](#js)
+  3.1 [A first example](#jsexamples)
+  3.2 [js where to](#jswhereto)
 
 
 <a name="setup"></a>
@@ -364,3 +366,108 @@ div.mycentereddiv {
 
 <a name="js"></a>
 ## 3. JS
+
+JavaScript is the programming language of HTML and the Web.
+
+<a name="jsexamples"></a>
+### 3.1. Some examples
+
+js can change the content (example 1), the attribute values (example 2), and the style (example 3) of an HTML element. It can also make elements appear and hide, and so on.
+
+Example 1:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+<p id="demo">JavaScript can change HTML content.</p>
+<button type="button" onclick="document.getElementById('demo').innerHTML = 'Hello JavaScript!'">Click Me!</button>
+
+</body>
+</html>
+```
+
+
+Example 2:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+<button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'">Turn on the light</button>
+<img id="myImage" src="https://www.w3schools.com/js/pic_bulboff.gif" style="width:100px">
+<button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'">Turn off the light</button>
+
+</body>
+</html>
+```
+
+Example 3:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+<p id="demo">JavaScript can change the style of an HTML element.</p>
+<button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button>
+
+</body>
+</html> 
+```
+
+<a name="jsexamples"></a>
+### 3.2. js where to
+
+Your js code can be **internal**, *i.e*. within `<script></script>` tags inside your HTML document, either between the `<head></head>` tags of the `<body></body>` tags. Example:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script>
+</head>
+
+<body>
+
+<h1>A Web Page</h1>
+<p id="demo">A Paragraph</p>
+<button type="button" onclick="myFunction()">Try it</button>
+
+</body>
+</html>
+```
+
+Or your js code can be **external**, *i.e.* within an external `.js` file. For instance:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>External JavaScript</h2>
+
+<p id="demo">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">Try it</button>
+
+<p>(myFunction is stored in an external file called "myScript.js")</p>
+
+<script src="myScript.js"></script>
+
+</body>
+</html>
+```
+```js
+function myFunction() {
+   document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+```
+External js is convenient. You can import several scripts, either local like `<script src="../allMyScripts/script1.js"></script>` or remote like `<script src="https://www.w3schools.com/js/myScript1.js"></script>`.
