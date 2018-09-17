@@ -1,2 +1,2 @@
 # MK351
-emlyon class "Mobile Apps Dev" MK351
+emlyon course MK351: "Mobile Apps Dev"
