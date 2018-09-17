@@ -12,10 +12,17 @@
   2.3. [CSS selectors](#cssselector)
   2.4. [CSS where to](#csswhereto)
   2.5. [Cascading over](#csscascading)
-  2.6. [Margin, border, padding](#cssmbp)
+  2.6. [CSS box model](#cssbox)
 3. [JS](#js)
-  3.1 [A first example](#jsexamples)
-  3.2 [js where to](#jswhereto)
+  3.1. [A first example](#jsexamples)
+  3.2. [js where to](#jswhereto)
+  3.3. [js events](#jsevents)
+  3.4. [js variables](#jsvariables)
+  3.5. [js conditionals and loops](#jscondloops)
+  3.6. [js functions](#jsfunctions)
+  3.7. [js objects](#jsobjects)
+  3.8. [js arrays](#jsarrays)
+  3.9. [js keywords *let* and *const*](#jskwd)
 
 
 <a name="setup"></a>
@@ -362,8 +369,12 @@ div.mycentereddiv {
 </div>
 ```
 
-<a name="js"></a>
-### 2.6. Margin, border, padding
+<a name="cssbox"></a>
+### 2.6. CSS box model
+
+All HTML elements can be considered as boxes. In CSS, the term "box model" is used when talking about design and layout.
+
+The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content. The image below illustrates the box model:
 
 ![Margin, border, padding](https://qph.fs.quoracdn.net/main-qimg-c878e8a880644d3a5b06c2f517db7e5a)
 
@@ -478,14 +489,74 @@ function myFunction() {
 ```
 External js is convenient. You can import several scripts, either relative/local like `<script src="../allMyScripts/script1.js"></script>` or absolute/remote like `<script src="https://www.w3schools.com/js/myScript1.js"></script>`.
 
+<a name="jsevents"></a>
+### 3.3. Events
+HTML events are "things" that happen to HTML elements.
 
-events
-https://developer.mozilla.org/en-US/docs/Web/Events
+When JavaScript is used in HTML pages, JavaScript can "react" on these events.
 
-variables
-functions
-objects (+this for methods)
-arrays
-let, const
+An HTML event can be something the browser does, or something a user does.
+
+Here are some examples of HTML events:
+
+- An HTML web page has finished loading
+- An HTML input field was changed
+- An HTML button was clicked
+Often, when events happen, you may want to do something.
+
+JavaScript lets you execute code when events are detected.
+
+HTML allows event handler attributes, **with JavaScript code**, to be added to HTML elements.
+
+In this example, the code changes the content of its own element (using this.innerHTML):
+```html
+<button onclick="this.innerHTML = Date()">The time is?</button>
+```
+Here is a list of some common HTML events:
+- onchange	An HTML element has been changed
+- onclick	The user clicks an HTML element
+- onmouseover	The user moves the mouse over an HTML element
+- onmouseout	The user moves the mouse away from an HTML element
+- onkeydown	The user pushes a keyboard key
+- onload	The browser has finished loading the page
+The list is much longer: [W3Schools JavaScript Reference HTML DOM Events.](https://www.w3schools.com/jsref/dom_obj_event.asp)
+
+Event handlers can be used to handle, and verify, user input, user actions, and browser actions:
+
+- Things that should be done every time a page loads
+- Things that should be done when the page is closed
+- Action that should be performed when a user clicks a button
+- Content that should be verified when a user inputs data
+- And more ...
+Many different methods can be used to let JavaScript work with events:
+- HTML event attributes can execute JavaScript code directly
+- HTML event attributes can call JavaScript functions
+- You can assign your own event handler functions to HTML elements
+- You can prevent events from being sent or being handled
+- And more ...
+
+You can learn about more this in the [W3School HTML DOM tutorial](https://www.w3schools.com/js/js_htmldom.asp).
+Fun examples can be found here: [W3School HTML DOM examples](https://www.w3schools.com/js/js_dom_examples.asp), and here: [W3School HTML DOM events examples](https://www.w3schools.com/js/js_events_examples.asp)
+
+<a name="jsvariables"></a>
+### 3.4. js variables
+
+
+<a name="jscondloops"></a>
+### 3.5. js conditionals and loops
+
+<a name="jsfunctions"></a>
+### 3.6. js functions
+
+<a name="jsobjects"></a>
+### 3.7. js objects 
+
+(+this for methods)
+
+<a name="jsarrays"></a>
+### 3.8. js arrays
+
+<a name="jskwd"></a>
+### 3.9. js keywords *let* and *const*
 
 
