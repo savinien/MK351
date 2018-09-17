@@ -12,6 +12,7 @@
   2.3. [CSS selectors](#cssselector)
   2.4. [CSS where to](#csswhereto)
   2.5. [Cascading over](#csscascading)
+  2.6. [Margin, border, padding](#cssmbp)
 3. [JS](#js)
   3.1 [A first example](#jsexamples)
   3.2 [js where to](#jswhereto)
@@ -361,8 +362,10 @@ div.mycentereddiv {
 </div>
 ```
 
+<a name="js"></a>
+### 2.6. Margin, border, padding
 
-
+![Margin, border, padding](https://qph.fs.quoracdn.net/main-qimg-c878e8a880644d3a5b06c2f517db7e5a)
 
 <a name="js"></a>
 ## 3. JS
