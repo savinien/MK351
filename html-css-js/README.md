@@ -372,7 +372,7 @@ JavaScript is the programming language of HTML and the Web.
 <a name="jsexamples"></a>
 ### 3.1. Some examples
 
-js can change the content (example 1), the attribute values (example 2), and the style (example 3) of an HTML element. It can also make elements appear and hide, and so on.
+js can change the content (example 1), the attribute values (example 2), and the style (example 3) of an HTML element, it can also make elements appear and hide, and so on.
 
 Example 1:
 ```html
@@ -424,7 +424,7 @@ Example 3:
 <a name="jsexamples"></a>
 ### 3.2. js where to
 
-Your js code can be **internal**, *i.e*. within `<script></script>` tags inside your HTML document, either between the `<head></head>` tags of the `<body></body>` tags. Example:
+Your js code can be **internal**, *i.e*. within `<script></script>` tags inside your HTML document, either between the `<head></head>` tags or between the `<body></body>` tags. Example:
 ```html
 <!DOCTYPE html>
 <html>
@@ -465,9 +465,10 @@ Or your js code can be **external**, *i.e.* within an external `.js` file. For i
 </body>
 </html>
 ```
+and your `script.js` contains `myFonction()`:
 ```js
 function myFunction() {
    document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
 ```
-External js is convenient. You can import several scripts, either local like `<script src="../allMyScripts/script1.js"></script>` or remote like `<script src="https://www.w3schools.com/js/myScript1.js"></script>`.
+External js is convenient. You can import several scripts, either relative/local like `<script src="../allMyScripts/script1.js"></script>` or absolute/remote like `<script src="https://www.w3schools.com/js/myScript1.js"></script>`.
