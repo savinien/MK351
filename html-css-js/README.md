@@ -596,19 +596,95 @@ for (i=0; i < fruits.length; i++){
   console.log(fruits[i]);
 }
 ```
+*while* and *do-while* loops:
+```js
+while (i < 10) {
+    text += "The number is " + i;
+    i++;
+}
+```
+```js
+do {
+    text += "The number is " + i;
+    i++;
+}
+while (i < 10);
+```
+If you forget to increase the variable used in the condition (here `i++`), the loop will never end. 
+This will crash your browser.
 
 
 
 <a name="jsfunctions"></a>
 ### 3.7. js functions
+A JavaScript function is a block of code designed to perform a particular task.
+
+A JavaScript function is executed when "something" invokes it (calls it).
+
+```js
+var x = product(4, 3);    // Function is called, return value will end up in x
+
+function product(a, b) {
+    return a * b;            // Function returns the product of a and b
+};
+```
+
+Function **parameters** are listed inside the parentheses () in the function definition.
+
+Function **arguments** are the values received by the function when it is invoked.
+
+Inside the function, the arguments (the parameters) behave as local variables.
+
 
 <a name="jsobjects"></a>
 ### 3.8. js objects 
 
-(+this for methods)
-ex array of objects
+Objects have **properties** and **methods** (actions that can be performed on the objects):
+```js
+var person = {
+    firstName: "Jacky",
+    lastName : "Chan",
+    id       : 5566,
+    fullName : function() {
+        return this.firstName + " " + this.lastName;
+    }
+};
+```
+You can access an objects property with the following syntax: `person.firstName` or `person['firstName']` (here "Jacky").
+
+You can call a method of an object with the following syntax: `person.fullName()` (here "Jacky Chan"). If you access the method without parentheses `()` it will return the function definition.
+
+In a function definition, **this** refers to the "owner" of the function. In the example above, this is the person object that "owns" the fullName function. In other words, `this.firstName` means the `firstName` property of this object.
 
 <a name="jskwd"></a>
 ### 3.9. js keywords *let* and *const*
 
+Variables declared **globally** (*i.e.* outside any function), have **global scope**.
 
+Variables declared **locally** (inside a function) have **function scope**.
+
+Variables declared with the `let` keyword can have **block scope**. Variables declared with `let` inside a block {} can not be accessed from outside the block.
+```js
+var a = 2; // a is declared globally
+let b = 0; // b is declared globally
+
+function myFunction(){
+  var c = 3; // c is declared locally within this function
+  // code here can use and modify a, b, and d
+  // but c cannot be used outside this function
+};
+
+{
+  var d = 5; // d is declared globally
+  let e = 7; // e is declared locally within this block of code (inside the {})
+  // e CANNOT be used and modified used outside this block
+}
+```
+
+Variables defined with `const` behave like `let` variables, except they cannot be reassigned.
+They are usefull for defining **constants**: variables whose values are fixed once and for all.
+```js
+const PI = 3.141592653589793;
+PI = 3.14;      // This will give an error
+PI = PI + 10;   // This will also give an error
+```
