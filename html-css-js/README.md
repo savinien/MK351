@@ -14,7 +14,7 @@
   2.5. [Cascading over](#csscascading)
   2.6. [CSS box model](#cssbox)
 3. [JS](#js)
-  3.1. [A first example](#jsexamples)
+  3.1. [Some examples](#jsexamples)
   3.2. [js where to](#jswhereto)
   3.3. [js events](#jsevents)
   3.4. [js variables](#jsvariables)
@@ -437,7 +437,7 @@ Example 3:
 </html> 
 ```
 
-<a name="jsexamples"></a>
+<a name="jswhereto"></a>
 ### 3.2. js where to
 
 Your js code can be **internal**, *i.e*. within `<script></script>` tags inside your HTML document, either between the `<head></head>` tags or between the `<body></body>` tags. Example:
