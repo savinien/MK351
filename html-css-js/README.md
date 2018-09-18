@@ -540,21 +540,73 @@ Fun examples can be found here: [W3School HTML DOM examples](https://www.w3schoo
 
 <a name="jsvariables"></a>
 ### 3.4. js variables
-
-
-<a name="jscondloops"></a>
-### 3.5. js conditionals and loops
-
-<a name="jsfunctions"></a>
-### 3.6. js functions
-
-<a name="jsobjects"></a>
-### 3.7. js objects 
-
-(+this for methods)
+You don't have to specify the type of variables in js. You just declare a variable like this:
+```js
+var a; // yet "undefined"
+a = 5; // it is now an integer
+var b = a + .1; // b is a flat
+var c = "Jacky";
+var d = c + " Chan"; // "Jacky Chan" 
+var d = false; // boolean
+var e = (5 < 5.1); // boolean, true
+```
 
 <a name="jsarrays"></a>
-### 3.8. js arrays
+### 3.5. js arrays
+Arrays can defined as follows:
+```js
+var fruits = ["apple", "banana", "carrot"];
+var mix = [1.0, 3, "abc", true];  // any types (even functions)
+var other = new Array(1.0, 2.0); // === [1.0, 2.0]
+```
+Entries of an array are accessed and modified like this:
+```js
+var first = fruits[0]; // "apple"
+var last = fruits[fruits.length - 1]; // "carrot"
+fruits[0] = 'artichoke'; // now fruits is ['artichoke','banana','carrot']
+```
+You can add or remove entries of an array like this:
+```js
+fruits.push("dill"); // inserts a new entry at the end of the array
+fruits.splice(0,1); // at slots 0, removes 1 element ('apple')
+fruits.splice(0,0,"pineapple", 'orange'); // at slot 0, removes 0 elements, and inserts "pineapple" and 'orange'
+```
+
+<a name="jscondloops"></a>
+### 3.6. js conditionals and loops
+*if-then-else* statement:
+```js
+var a = 5.0;
+var b = 5;
+if (a == b) {
+  console.log("a and b have the same value");
+} else if (a === b){
+  console.log("a and b have the same value, and same type");
+} else {
+  // executed when none of the above two conditions are true
+}
+```
+*for* loop:
+```js
+for (i=0; i < fruits.length; i++){
+  if (i == 2){
+    break; // "break" interrupts the loop 
+    // "continue" jumps over to the next iteration (ignoring the remaining statement of this iteration)
+  };
+  console.log(fruits[i]);
+}
+```
+
+
+
+<a name="jsfunctions"></a>
+### 3.7. js functions
+
+<a name="jsobjects"></a>
+### 3.8. js objects 
+
+(+this for methods)
+ex array of objects
 
 <a name="jskwd"></a>
 ### 3.9. js keywords *let* and *const*
