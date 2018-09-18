@@ -18,10 +18,10 @@
   3.2. [js where to](#jswhereto)
   3.3. [js events](#jsevents)
   3.4. [js variables](#jsvariables)
-  3.5. [js conditionals and loops](#jscondloops)
-  3.6. [js functions](#jsfunctions)
-  3.7. [js objects](#jsobjects)
-  3.8. [js arrays](#jsarrays)
+  3.5. [js arrays](#jsarrays)
+  3.6. [js conditionals and loops](#jscondloops)
+  3.7. [js functions](#jsfunctions)
+  3.8. [js objects](#jsobjects)
   3.9. [js keywords *let* and *const*](#jskwd)
 
 
@@ -394,13 +394,13 @@ Example 1:
 ```html
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
 
-<h2>What Can JavaScript Do?</h2>
-<p id="demo">JavaScript can change HTML content.</p>
-<button type="button" onclick="document.getElementById('demo').innerHTML = 'Hello JavaScript!'">Click Me!</button>
+  <h2>What Can JavaScript Do?</h2>
+  <p id="demo">JavaScript can change HTML content.</p>
+  <button type="button" onclick="document.getElementById('demo').innerHTML = 'Hello JavaScript!'">Click Me!</button>
 
-</body>
+  </body>
 </html>
 ```
 
@@ -409,15 +409,15 @@ Example 2:
 ```html
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
 
-<h2>What Can JavaScript Do?</h2>
-<p>JavaScript can change HTML attribute values.</p>
-<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+    <h2>What Can JavaScript Do?</h2>
+    <p>JavaScript can change HTML attribute values.</p>
+    <p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
 
-<button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'">Turn on the light</button>
-<img id="myImage" src="https://www.w3schools.com/js/pic_bulboff.gif" style="width:100px">
-<button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'">Turn off the light</button>
+    <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'">Turn on the light</button>
+    <img id="myImage" src="https://www.w3schools.com/js/pic_bulboff.gif" style="width:100px">
+    <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'">Turn off the light</button>
 
 </body>
 </html>
@@ -427,13 +427,13 @@ Example 3:
 ```html
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
 
-<h2>What Can JavaScript Do?</h2>
-<p id="demo">JavaScript can change the style of an HTML element.</p>
-<button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button>
+    <h2>What Can JavaScript Do?</h2>
+    <p id="demo">JavaScript can change the style of an HTML element.</p>
+    <button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button>
 
-</body>
+  </body>
 </html> 
 ```
 
@@ -444,21 +444,21 @@ Your js code can be **internal**, *i.e*. within `<script></script>` tags inside 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-<script>
-function myFunction() {
-    document.getElementById("demo").innerHTML = "Paragraph changed.";
-}
-</script>
-</head>
+  <head>
+    <script>
+      function myFunction() {
+          document.getElementById("demo").innerHTML = "Paragraph changed.";
+      }
+    </script>
+  </head>
 
-<body>
+  <body>
 
-<h1>A Web Page</h1>
-<p id="demo">A Paragraph</p>
-<button type="button" onclick="myFunction()">Try it</button>
+    <h1>A Web Page</h1>
+    <p id="demo">A Paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button>
 
-</body>
+  </body>
 </html>
 ```
 
@@ -466,19 +466,19 @@ Or your js code can be **external**, *i.e.* within an external `.js` file. For i
 ```html
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
 
-<h2>External JavaScript</h2>
+    <h2>External JavaScript</h2>
 
-<p id="demo">A Paragraph.</p>
+    <p id="demo">A Paragraph.</p>
 
-<button type="button" onclick="myFunction()">Try it</button>
+    <button type="button" onclick="myFunction()">Try it</button>
 
-<p>(myFunction is stored in an external file called "myScript.js")</p>
+    <p>(myFunction is stored in an external file called "myScript.js")</p>
 
-<script src="myScript.js"></script>
+    <script src="myScript.js"></script>
 
-</body>
+  </body>
 </html>
 ```
 and your `script.js` file contains `myFunction()`:
@@ -654,7 +654,7 @@ You can access an objects property with the following syntax: `person.firstName`
 
 You can call a method of an object with the following syntax: `person.fullName()` (here "Jacky Chan"). If you access the method without parentheses `()` it will return the function definition.
 
-In a function definition, **this** refers to the "owner" of the function. In the example above, this is the person object that "owns" the fullName function. In other words, `this.firstName` means the `firstName` property of this object.
+In a function definition, `this` refers to the "owner" of the function. In the example above, `this` is the person object that "owns" the `fullName` function. In other words, `this.firstName` means the `firstName` property of this object.
 
 <a name="jskwd"></a>
 ### 3.9. js keywords *let* and *const*
@@ -663,7 +663,7 @@ Variables declared **globally** (*i.e.* outside any function), have **global sco
 
 Variables declared **locally** (inside a function) have **function scope**.
 
-Variables declared with the `let` keyword can have **block scope**. Variables declared with `let` inside a block {} can not be accessed from outside the block.
+Variables declared with the `let` keyword can have **block scope**. Variables declared with `let` inside a block `{}` can not be accessed from outside the block.
 ```js
 var a = 2; // a is declared globally
 let b = 0; // b is declared globally
