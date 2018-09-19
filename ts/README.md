@@ -35,7 +35,7 @@ You get compile-time erros in ts, rather than run-time errors in js: you may spo
 - transcribe ts code into js by executing `tsc mytsfile.ts` at the command line: this converts your code into js in a new file (`mytsfile.js` here)
 - you can run the `.js` file with node by executing `node mytsfile.js` at the command line.
 
-
+Like in js, any statement has to end up with a semi-colon (`;`), and use `//` for comments.
 
 <a name="tsvar"></a>
 ## 2. ts variables
@@ -73,13 +73,13 @@ ts functions are defined like this:
 ```ts
 let doLog0 = function(message: string){
   console.log(message);
-}
+};
 ```
 or with an "arrow" like this:
 ```ts
 let doLog1 = (message) => {
   console.log(message);
-}
+};
 let doLog2 = (message) => console.log(message); // for one line functions only
 ```
 If a function does not return anything like in the above examples, it is of `void` type
@@ -89,7 +89,7 @@ Like in js, use the `return` keyword to return something, for example:
 let mySearch = function(source: string, subString: string) {
     let result = source.search(subString);
     return result > -1; // return type is boolean
-}
+};
 ```
 
 <a name="tsint"></a>
