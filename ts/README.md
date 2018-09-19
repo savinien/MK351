@@ -47,7 +47,7 @@ let a: number; // integer or floating point number
 a = 1;
 a = 'blabla'; // compilation error!
 let b: boolean;
-let c: string = "hello";
+let c: string = "hello"; // optional initialisation
 let d: any; // any type, will be assigned when you assign a value
 ```
 If a variable is declared with `any` type, you can use type assertion to set its type like in this example:
