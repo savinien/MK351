@@ -550,6 +550,9 @@ var d = c + " Chan"; // "Jacky Chan"
 var d = false; // boolean
 var e = (5 < 5.1); // boolean, true
 ```
+Notice that each statement in js code has to end up with a semi-colon (`;`).
+Use `//` to comment your code.
+
 
 <a name="jsarrays"></a>
 ### 3.5. js arrays
