@@ -43,22 +43,54 @@ Use `let` to define variables in ts. As is js your variables --unless globally d
 
 You can declare types in ts (and you should).
 ```ts
-let a: number; // integers or floating point numbers
+let a: number; // integer or floating point number
 a = 1;
-a = 'blabla'; // get compilation error!
+a = 'blabla'; // compilation error!
 let b: boolean;
-let c: string;
+let c: string = "hello";
 let d: any; // any type, will be assigned when you assign a value
 ```
+If a variable is declared with `any` type, you can use type assertion to set its type like in this example:
+```ts
+let msg;
+msg = 'abc';
+let oneWay = (<string>msg).replace('a','b');
+let alternativeWay = (msg as string).replace('a','b');
+```
+
 Arrays are defined similarly:
 ```ts
 let e: number[]; // array of numbers
 let f: number[] = [1, 2, 3]; // optional initialisation
 let i: any[] = [1, true, 'a']; // avoid, this is not good practice.
 ```
+Like in js, your can declare constant variables with `const`.
+
 
 <a name="tsfn"></a>
 ## 0. ts functions
+ts functions are defined like this:
+```ts
+let doLog0 = function(message: string){
+  console.log(message);
+}
+```
+or with an "arrow" like this:
+```ts
+let doLog1 = (message) => {
+  console.log(message);
+}
+let doLog2 = (message) => console.log(message); // for one line functions only
+```
+If a function does not return anything like in the above examples, it is of `void` type
+
+Like in js, use the `return` keyword to return something, for example:
+```ts
+let mySearch = function(source: string, subString: string) {
+    let result = source.search(subString);
+    return result > -1; // return type is boolean
+}
+```
 
 <a name="tsint"></a>
 ## 0. ts interfaces
