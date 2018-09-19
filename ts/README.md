@@ -19,9 +19,8 @@ Choose the Long Time Support (LTS) version (not the current version with latest 
 Install typescript, via `npm` (node package manager): open a terminal and type in:
 - `npm install -g typescript` on windows and linux
 - `sudo npm install -g typescript` on mac
-(the `-g` command is for a global install on your computer)
 
-NB: if your using chrome browser, it has a js console where you can run your code too.
+(the `-g` command is for a global install on your computer)
 
 <a name="tsbas"></a>
 ## 1. ts basics
