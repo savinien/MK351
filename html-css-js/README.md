@@ -489,6 +489,8 @@ function myFunction() {
 ```
 External js is convenient. You can import several scripts, either relative/local like `<script src="../allMyScripts/script1.js"></script>` or absolute/remote like `<script src="https://www.w3schools.com/js/myScript1.js"></script>`.
 
+NB: if you are using chrome browser, it has a js console (in `View/Developer/JavaScript Console`) where you can run your code.
+
 <a name="jsevents"></a>
 ### 3.3. Events
 HTML events are "things" that happen to HTML elements.
