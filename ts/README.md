@@ -1,6 +1,6 @@
 # Crash course on ts
 
-0. [Setup](#setup)
+0. [Setup](#tssetup)
 1. [ts basics](#tsbas)
 2. [ts variables](#tsvar)
 3. [ts functions](#tsfn)
@@ -38,7 +38,7 @@ You get compile-time erros in ts, rather than run-time errors in js: you may spo
 
 
 <a name="tsvar"></a>
-## 1. ts variables
+## 2. ts variables
 Use `let` to define variables in ts. As is js your variables --unless globally declared-- will have block scope.
 
 You can declare types in ts (and you should).
@@ -68,7 +68,7 @@ Like in js, your can declare constant variables with `const`.
 
 
 <a name="tsfn"></a>
-## 0. ts functions
+## 3. ts functions
 ts functions are defined like this:
 ```ts
 let doLog0 = function(message: string){
@@ -93,13 +93,13 @@ let mySearch = function(source: string, subString: string) {
 ```
 
 <a name="tsint"></a>
-## 0. ts interfaces
+## 4. ts interfaces
 
 <a name="tsclass"></a>
-## 0. ts classes
+## 5. ts classes
 
 
 <a name="tsmod"></a>
-## 0. ts modules
+## 6. ts modules
 
 
