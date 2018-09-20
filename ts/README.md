@@ -12,9 +12,9 @@
 ## 0. Setup
 
 Install [node js](https://nodejs.org/en/).
-Choose the Long Time Support (LTS) version (not the current version with latest features).
+Choose the Long Time Support (LTS) version --not the current version with latest features.
 - download the `.pkg` file from the website
-- click on the `.pkg` file to install it
+- duoble click on the `.pkg` file to install it
 
 Install typescript, via `npm` (node package manager): open a terminal and type in:
 - `npm install -g typescript` on windows and linux
@@ -93,9 +93,59 @@ let mySearch = function(source: string, subString: string) {
 
 <a name="tsint"></a>
 ## 4. ts interfaces
+Interfaces allow you to define custom made objects, like for instance:
+```ts
+interface SimplePoint{
+  y: number,
+  z?: number // this is an optional property
+}
+```
+We use *Pascal convention*: objects and custom types are capitalized (here `SimplePoint`).
+
+You can also define function types in an interface, declaring only its type (the type of what it returns - `void` in case it doesn't return anything), and the types of its arguments:
+```ts
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+```
+and you would call such a method like this:
+```ts
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+    let result = source.search(subString);
+    return result > -1;
+}
+```
+The implementations of such properties and methods is not done within the interface. The interface is simply like a "frame".
 
 <a name="tsclass"></a>
 ## 5. ts classes
+Classes allow you to define custom made objects, and implement their properties and methods.
+In addition a class have a special method, called a **constructor** which we use set up initial values of class properties.
+Example:
+```ts
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+    printGreeting(){
+        console.log(this.greet());
+    }
+}
+
+let greeter = new Greeter("world");
+```
+In the last line we construct an instance of the Greeter class using `new`. This calls into the constructor we defined earlier, creating a new object with the `Greeter` shape, and running the constructor to initialize it.
+
+You can call the methods of your object by appending `.nameOfMethod()` to its name, such as: `greeter.printGreeting();`.
+
+
+
+
 
 
 <a name="tsmod"></a>
