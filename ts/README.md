@@ -116,11 +116,11 @@ mySearch = function(source: string, subString: string) {
     return result > -1;
 }
 ```
-The implementations of such properties and methods is not done within the interface. The interface is simply like a "frame".
+The implementations of such properties and methods is not done within the interface. The interface is simply like a "shape".
 
 <a name="tsclass"></a>
 ## 5. ts classes
-Classes allow you to define custom made objects, and implement their properties and methods.
+Classes allow you to define custom made objects, and --unlike interfaces-- contain implementation details of their properties and methods.
 In addition a class have a special method, called a **constructor** which we use set up initial values of class properties.
 Example:
 ```ts
@@ -137,12 +137,54 @@ class Greeter {
     }
 }
 
-let greeter = new Greeter("world");
+let greeter = new Greeter("guys!\n How are you doing?");
 ```
 In the last line we construct an instance of the Greeter class using `new`. This calls into the constructor we defined earlier, creating a new object with the `Greeter` shape, and running the constructor to initialize it.
 
-You can call the methods of your object by appending `.nameOfMethod()` to its name, such as: `greeter.printGreeting();`.
+You can call the methods of your object by appending `.nameOfMethod()` to its name, here for example: `greeter.printGreeting();`.
 
+By default, properties and methods are **public**: you can access them from any instanciated object of the class.
+You might want some properties and methods to be **private** to add private functionality into your classes. What are private properties or methods? A private property or method can only be accessed or called from the class instance itself. Let’s take a look at an example of private properties:
+```ts
+class Greeter {
+    greeting: string;
+    private politeness: string = "Dear Sir or Madam";
+    private forbiddenWords: string[] = ['dude', 'idiot', 'moron', 'stupid'];
+
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+    printGreeting(){
+        console.log(this.greet());
+    }
+    // this is a 'getter': to access a private property
+    getPoliteness() {
+        return this.politeness;
+    }
+    // this is a 'setter': to modify a private property
+    setPoliteness(polite: string){
+        let noCurse: boolean = true;
+        for (let curse of this.forbiddenWords){
+            noCurse = noCurse && (polite.search(curse) == -1);
+        }
+        if(noCurse){
+            this.politeness = polite;
+        } else {
+            throw new Error('politeness update refused: inapropriate language!');
+        }
+    }
+}
+
+let greeter = new Greeter("Eric Marshal");
+greeter.politeness; // Error: 'politeness' is private;
+console.log(greeter.getPoliteness()); // prints out "Dir Sir or Madam"
+greeter.setPoliteness("My dear friend"); // updates 'politeness'
+greeter.setPoliteness("What's up dude!?); // Error: politeness update refused: inapropriate language!
+```
+As you can see `private` hides the property from the user/consumer of the class. If you try to set `greeter.politeness` you get an error.
 
 
 
