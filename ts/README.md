@@ -95,7 +95,7 @@ let mySearch = function(source: string, subString: string) {
 
 <a name="tsint"></a>
 ## 4. ts interfaces
-Interfaces allow you to define custom made objects, like for instance:
+Interfaces allow you to define custom type objects, like for instance:
 ```ts
 interface SimplePoint{
   x: number;
