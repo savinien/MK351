@@ -321,9 +321,9 @@ let aCurse = new MyCurse;
 aCurse.getCurse();
 ```
 If you want to import everything from `myModule.ts` type in `import * from './myModule'`
-You can import an element of a module and use it in your file with a different name, for instance
+You can import an element of a module and use it in your file with a different name (typically simpler!), for instance
 ```ts
-import {SimplePoint as sP} from './myModule'
+import {SimplePoint as SP} from './myModule'
 
-let point: sP = {x:0.1, y:3.4};
+let point: SP = {x:0.1, y:3.4};
 ```
