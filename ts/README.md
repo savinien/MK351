@@ -284,6 +284,46 @@ The `protected` modifier acts much like the `private` modifier with the exceptio
 
 <a name="tsmod"></a>
 ## 6. ts modules
-A module is any ts file that can be exported and imported to another one, *i.e* starts with `import` or `export` statements.
+A module is any ts file that can be exported to or import another one, *i.e* starts with `import` or `export` statements.
+You can specify what can be exported outside your module, and what you want to import from other modules.
+You can import/export anything: variables, constants, functions, interfaces, classes, and so on.
+Here is an exemple
+```ts
+// myModule.ts file
+export function greetingsFunction(name: string){
+  console.log("hello, ", name);
+}
 
+export interface SimplePoint {
+  x: number;
+  y: number;
+}
 
+export class MyCurse{
+  private curse: string;
+  constructor(){
+    this.curse = "coucouille";
+  }
+  getCurse(){
+    console.log(this.curse);
+  }
+}
+```
+And in an other ts file, you can import this module, or some part of it as follows:
+```ts
+import {greetingsFunction, MyCurse} from '/.myModule'
+
+let greet = greetingsFunction;
+greet("Larry");
+greet("Sally");
+
+let aCurse = new MyCurse;
+aCurse.getCurse();
+```
+If you want to import everything from `myModule.ts` type in `import * from './myModule'`
+You can import an element of a module and use it in your file with a different name, for instance
+```ts
+import {SimplePoint as sP} from './myModule'
+
+let point: sP = {x:0.1, y:3.4};
+```
