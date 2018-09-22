@@ -8,11 +8,13 @@
 5. [ts classes](#tsclass)
 6. [ts modules](#tsmod)
 
+Main reference [ts documentation](https://www.typescriptlang.org/docs/home.html), in particular the handbook chapters about interfaces and classes.
+
 <a name="tssetup"></a>
 ## 0. Setup
 
 Install [node js](https://nodejs.org/en/).
-Choose the Long Time Support (LTS) version --not the current version with latest features.
+Choose the Long Time Support (LTS) version -not the current version with latest features.
 - download the `.pkg` file from the website
 - duoble click on the `.pkg` file to install it
 
@@ -20,7 +22,7 @@ Install typescript, via `npm` (node package manager): open a terminal and type i
 - `npm install -g typescript` on windows and linux
 - `sudo npm install -g typescript` on mac
 
-(the `-g` command is for a global install on your computer)
+(the `-g` command is to ensure a7po global install on your computer)
 
 <a name="tsbas"></a>
 ## 1. ts basics
@@ -38,7 +40,7 @@ Like in js, any statement has to end up with a semi-colon (`;`), and use `//` fo
 
 <a name="tsvar"></a>
 ## 2. ts variables
-Use `let` to define variables in ts. As is js your variables --unless globally declared-- will have block scope.
+Use `let` to define variables in ts. As is js your variables -unless globally declared- will have block scope.
 
 You can declare types in ts (and you should).
 ```ts
@@ -120,7 +122,7 @@ The implementations of such properties and methods is not done within the interf
 
 <a name="tsclass"></a>
 ## 5. ts classes
-Classes allow you to define custom made objects, and --unlike interfaces-- contain implementation details of their properties and methods.
+Classes allow you to define custom made objects, and -unlike interfaces- contain implementation details of their properties and methods.
 In addition a class have a special method, called a **constructor** which we use set up initial values of class properties.
 Example:
 ```ts
@@ -141,10 +143,10 @@ let greeter = new Greeter("guys!\n How are you doing?");
 ```
 In the last line we construct an instance of the Greeter class using `new`. This calls into the constructor we defined earlier, creating a new object with the `Greeter` shape, and running the constructor to initialize it.
 
-You can call the methods of your object by appending `.nameOfMethod()` to its name, here for example: `greeter.printGreeting();`.
+You can call the methods of your object by appending `.nameOfMethod()` to the object name, here for example: `greeter.printGreeting();`.
 
 By default, properties and methods are **public**: you can access them from any instanciated object of the class.
-You might want some properties and methods to be **private** to add private functionality into your classes. What are private properties or methods? A private property or method can only be accessed or called from the class instance itself. Let’s take a look at an example of private properties:
+You might want some properties and methods to be **private** to add private functionality into your classes. What are private properties or methods? A private property or method can only be accessed or called from the class instance itself. Let’s add up private properties to our Greeter class:
 ```ts
 class Greeter {
     greeting: string;
@@ -179,16 +181,87 @@ class Greeter {
 }
 
 let greeter = new Greeter("Eric Marshal");
-greeter.politeness; // Error: 'politeness' is private;
+greeter.printGreeting; // prints out "Hello Eric Marshal"
+greeter.politeness; // Error: 'politeness' is private
 console.log(greeter.getPoliteness()); // prints out "Dir Sir or Madam"
 greeter.setPoliteness("My dear friend"); // updates 'politeness'
-greeter.setPoliteness("What's up dude!?); // Error: politeness update refused: inapropriate language!
+greeter.setPoliteness("What's up dude!?"); // Error: politeness update refused: inapropriate language!
 ```
-As you can see `private` hides the property from the user/consumer of the class. If you try to set `greeter.politeness` you get an error.
+As you can see `private` hides the property from the user/consumer of the class. If you try to set `greeter.politeness` you get an error, you can only do that using the setter `setPoliteness()`.
 
 
+In TypeScript, we can use common object-oriented patterns. One of the most fundamental patterns in class-based programming is being able to extend existing classes to create new ones using **inheritance**.
 
+Let’s take a look at an example:
+```ts
+class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
 
+class Dog extends Animal {
+    bark() {
+        console.log('Woof! Woof!');
+    }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();
+```
+
+This example shows the most basic inheritance feature: classes inherit properties and methods from base classes. Here, `Dog` is a *derived* class that derives from the `Animal` *base* class using the `extends` keyword. Derived classes are often called *subclasses*, and base classes are often called *superclasses*.
+
+Because `Dog` extends the functionality from `Animal`, we were able to create an instance of `Dog` that could both `bark()` and `move()`.
+
+Let’s now look at a more complex example.
+```ts
+class Animal {
+    name: string;
+    constructor(theName: string) { this.name = theName; }
+    move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
+}
+
+class Snake extends Animal {
+    constructor(name: string) { super(name); }
+    move(distanceInMeters = 5) {
+        console.log("Slithering...");
+        super.move(distanceInMeters);
+    }
+}
+
+class Horse extends Animal {
+    constructor(name: string) { super(name); }
+    move(distanceInMeters = 45) {
+        console.log("Galloping...");
+        super.move(distanceInMeters);
+    }
+}
+
+let sam = new Snake("Sammy the Python");
+let tom: Animal = new Horse("Tommy the Palomino");
+
+sam.move();
+tom.move(34);
+```
+This example covers a few other features we didn’t previously mention. Again, we see the `extends` keywords used to create two new subclasses of `Animal`: `Horse` and `Snake`.
+
+One difference from the prior example is that each derived class that contains a constructor function *must* call `super()` which will execute the constructor of the base class. What’s more, before we *ever* access a property on this in a constructor body, we *have* to call `super()`. This is an important rule that TypeScript will enforce.
+
+The example also shows how to override methods in the base class with methods that are specialized for the subclass. Here both `Snake` and `Horse` create a move method that overrides the move from `Animal`, giving it functionality specific to each class. Note that even though `tom` is declared as an `Animal`, since its value is a `Horse`, calling `tom.move(34)` will call the overriding method in `Horse`:
+```
+Slithering...
+Sammy the Python moved 5m.
+Galloping...
+Tommy the Palomino moved 34m.
+```
+
+In addition to **public** and **private** there is another modifier: **protected**.
+The `protected` modifier acts much like the `private` modifier with the exception that members declared `protected` can also be accessed within deriving classes.
 
 <a name="tsmod"></a>
 ## 6. ts modules
