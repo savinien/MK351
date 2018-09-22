@@ -22,7 +22,7 @@ Install typescript, via `npm` (node package manager): open a terminal and type i
 - `npm install -g typescript` on windows and linux
 - `sudo npm install -g typescript` on mac
 
-(the `-g` command is to ensure a7po global install on your computer)
+(the `-g` command is to ensure global install on your computer)
 
 <a name="tsbas"></a>
 ## 1. ts basics
