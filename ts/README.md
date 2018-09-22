@@ -98,11 +98,27 @@ let mySearch = function(source: string, subString: string) {
 Interfaces allow you to define custom made objects, like for instance:
 ```ts
 interface SimplePoint{
-  y: number,
-  z?: number // this is an optional property
+  x: number;
+  y?: number; // this is an optional property
 }
 ```
 We use *Pascal convention*: objects and custom types are capitalized (here `SimplePoint`).
+If you have a function using the interface defined above:
+```ts
+function doSomething(point: SimplePoint) {
+  // ...
+}
+```
+the TypeScript compile will fail if an object does not have the exact signature of the `SimplePoint` interface.
+If you want to really declare an object of type `SimplePoint`, you can do it like this:
+```ts
+let pointB: SimplePoint = { x: 0.3, y: 4.5};
+
+let pointA = <SimplePoint>{};
+pointA.x = 0.1;
+pointB.y = 3.1;
+pointB.z = 1.0; // Error: Property 'z' does not exist on type 'SimplePoint'
+```
 
 You can also define function types in an interface, declaring only its type (the type of what it returns - `void` in case it doesn't return anything), and the types of its arguments:
 ```ts
@@ -110,7 +126,7 @@ interface SearchFunc {
     (source: string, subString: string): boolean;
 }
 ```
-and you would call such a method like this:
+and you would declare a function of this `SearchFunc` type like this:
 ```ts
 let mySearch: SearchFunc;
 mySearch = function(source: string, subString: string) {
@@ -118,7 +134,10 @@ mySearch = function(source: string, subString: string) {
     return result > -1;
 }
 ```
-The implementations of such properties and methods is not done within the interface. The interface is simply like a "shape".
+The implementations of such properties and methods is *not* done within the interface. The interface is simply like a "shape".
+
+Such interfaces are only used at compile time and for code-hinting/intellisense. Interfaces are used to provide a rigorous and type-safe way of using an object with a defined signature in a consistent manner.
+
 
 <a name="tsclass"></a>
 ## 5. ts classes
@@ -265,5 +284,6 @@ The `protected` modifier acts much like the `private` modifier with the exceptio
 
 <a name="tsmod"></a>
 ## 6. ts modules
+A module is any ts file that can be exported and imported to another one, *i.e* starts with `import` or `export` statements.
 
 
