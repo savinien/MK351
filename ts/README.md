@@ -320,7 +320,7 @@ greet("Sally");
 let aCurse = new MyCurse;
 aCurse.getCurse();
 ```
-If you want to import everything from `myModule.ts` type in `import * from './myModule'`
+If you want to import everything from `myModule.ts` type in `import * from './myModule'`.
 You can import an element of a module and use it in your file with a different name (typically simpler!), for instance
 ```ts
 import {SimplePoint as SP} from './myModule'
