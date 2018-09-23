@@ -312,19 +312,19 @@ export class MyCurse{
 ```
 And in an other ts file, you can import this module, or some part of it as follows:
 ```ts
-import {greetingsFunction, MyCurse} from '/.myModule'
+import { greetingsFunction, MyCurse } from '/.myModule'
 
 let greet = greetingsFunction;
-greet("Larry");
-greet("Sally");
+greet("Larry"); // prints out "hello, Larry"
+greet("Sally"); // prints out "hello, Sally"
 
 let aCurse = new MyCurse;
-aCurse.getCurse();
+aCurse.getCurse(); // prints out what?!
 ```
 If you want to import everything from `myModule.ts` type in `import * from './myModule'`.
 You can import an element of a module and use it in your file with a different name (typically simpler!), for instance
 ```ts
-import {SimplePoint as SP} from './myModule'
+import { SimplePoint as SP } from './myModule'
 
 let point: SP = {x:0.1, y:3.4};
 ```
