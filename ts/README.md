@@ -28,7 +28,8 @@ Install typescript, via `npm` (node package manager): open a terminal and type i
 ## 1. ts basics
 ts was originally developped by microsoft, and is now used widely (by google notably).
 
-ts is a superset of js: any valid js code is valid ts code. But ts comes in with many more interesting features. In particular it is object oriented.
+ts is a superset of js: any valid js code is valid ts code. But ts comes in with many more interesting features. In particular it is object oriented. Essentially TypeScript is *linting* JavaScript, and doing a better job at it than other linters that don't have type information.
+
 
 You get compile-time erros in ts, rather than run-time errors in js: you may spot errors before running your code.
 
