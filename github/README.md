@@ -13,7 +13,7 @@ Install [git](https://git-scm.com/downloads).
 
 Create a free account on [github](http://github.com). If you'd like it, you can afterwards apply for the [student developper pack](https://education.github.com/pack).
 
-At the command line clone the class repo: `git clone https://github.com/savinien/MK351.git`, or `git clone https://github.com/savinien/MK351.git name_of_your_repertory` where `name_of_your_repertory` is the name of the repertory you'd like to store the class repo into.
+At the command line clone the class repo: `git clone https://github.com/savinien/MK351.git`, or `git clone https://github.com/savinien/MK351.git name_of_your_repertory` where `name_of_your_repertory` is the name of the directory you'd like to store the class repo into.
 
 
 <a name="gitbas"></a>
@@ -26,7 +26,7 @@ At the command line clone the class repo: `git clone https://github.com/savinien
 Git is universally used to you work on a project with your collaborators, saving your code in a remote server, typically on github.
 The main project on github, at the current development version, is typically called the **master branch**. Collaborators typically work on **branches** to develop specific parts of the project without modifying the whole project, and **merge** their branches to the master branch once they've completed their work.
 
-When you start working on your machine, you first **initialize** git in your working repertory or **clone** a github repo to copy it down to your working repertory (which initializes git on it). When you are working on your project, you **pull** the project from github to get its latest state of development, work on your branch on your machine, **pull** your work back to github, and eventually **merge** your branch to the master branch when you are done.
+When you start working on your machine, you first **initialize** git in your working directory or **clone** a github repo to copy it down to your working directory (which initializes git on it). When you are working on your project, you **pull** the project from github to get its latest state of development, work on your branch on your machine, **push** your work back to github, and eventually **merge** your branch to the master branch when you are done.
 
 These steps can be done as follows:
 - **initialize** git in a repertory on your machine: `git init`
@@ -34,7 +34,7 @@ These steps can be done as follows:
 - **pull** from github: `git pull`
 - **stage** changes to your local files: `git add my_modified_file`. To stage all files in your repertory: `git add -A`
 - **commit** your changes: `git commit -m "message"` where your leave a precise and concise `message` about what you did. A commit is like a snapshot of your project at a specific time of development.
-- **push** your work back to github: `git push`
+- **push** your work (latest commit) back to github: `git push`. If you want to push a specific branch only: `git push origin branch_name`, where `branch_name` is the name of your branch (has to be the same name in your machine than on github), and `origin` stands for your project on github.
 
 Git offers much more than these basic operations. Commits and especially pushs have to be *carefully coordinated* with your collaborators to avoid conflicts...
 
