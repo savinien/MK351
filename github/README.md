@@ -13,7 +13,7 @@ Install [git](https://git-scm.com/downloads).
 
 Create a free account on [github](http://github.com). If you'd like it, you can afterwards apply for the [student developper pack](https://education.github.com/pack).
 
-At the command line clone the class repo: `git clone https://github.com/savinien/MK351.git`, or `git clone https://github.com/savinien/MK351.git name_of_your_repertory` where `name_of_your_repertory` is the name of the directory you'd like to store the class repo into.
+At the command line clone the class repo: `git clone https://github.com/savinien/MK351.git`, or `git clone https://github.com/savinien/MK351.git name_of_your_folder` where `name_of_your_folder` is the name of the folder you'd like to store the class repo into.
 
 
 <a name="gitbas"></a>
