@@ -329,8 +329,8 @@ import { SimplePoint as SP } from './myModule'
 let point: SP = {x:0.1, y:3.4};
 ```
 And you can alias your whole module to as follows: 
-`ts
+```ts
 import * as MyMod from '.myModule'
 
 let point: MyMod.SimplePoint = {x:0.1, y:3.4};
-`
+```
