@@ -26,12 +26,68 @@ interface imageElement {
   url: string;
 }
 
-let data: imageElement[];
+let data: imageElement[] = [];
 data[0]= {
   description: "this is a pinguin",
   url: "www...."
 };
+/*
 data.push({
   discription: "this is dog", //compilation error!
   url: "www..."
 })
+*/
+
+
+class Greeter {
+    // properties
+    greeting: string;
+    welcome: string;
+    private secretMessage: string;
+    // constructor
+    constructor(message: string, private secret: string) {
+        this.greeting = message;
+        this.welcome = "Hello!";
+        this.secretMessage = secret;
+    }
+    // methods
+    private greet() {
+        return "Hello, " + this.greeting;
+    }
+    printGreeting(){
+        console.log(this.greet());
+    }
+    // getter
+    getSecret(){
+      return this.secretMessage;
+    }
+    // setter
+    setSecret(newSecret: string){
+      this.secretMessage = newSecret;
+    }
+}
+
+let greeter = new Greeter("guys!\n How are you doing?", "don't say it!");
+greeter.printGreeting();
+console.log("My Greeter message: ", greeter.welcome);
+console.log("secret message: ", greeter.getSecret());
+greeter.setSecret("really do not say a word about it!");
+console.log("new secret: ", greeter.getSecret());
+/*
+// errors! private method and property
+console.log(greeter.secretMessage);
+greeter.greet();
+*/
+
+
+import { greetingsFunction, MyCurse } from './myModule';
+let greet = greetingsFunction;
+greet("Larry"); // prints out "hello, Larry"
+greet("Sally"); // prints out "hello, Sally"
+
+let aCurse = new MyCurse;
+aCurse.getCurse(); // prints out what?!
+
+import { SimplePoint as SP } from './myModule';
+let point: SP = {x:0.1, y:3.4};
+console.log("my point's coordinates: ", point.x, point.y);
