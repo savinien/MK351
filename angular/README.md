@@ -18,12 +18,14 @@ Install angular cli: `npm install -g @angular/cli`
 ## 1. angular basics
 
 **Create** a new angular project:
-- `ng new myapp`
-this creates a folder `./myapp` with the angular project in it, then
-- `cd myapp`
-- `atom .`
++ `ng new myapp`
+
+this creates a folder `./myapp` with the angular project, named **myapp**, in it, then
++ `cd myapp`
++ `atom .`
 
 **Serve** the project: type this within `myapp` folder
-- `ng serve`
++ `ng serve`
+
 This will launch the application on your browser, which will be running from [http://localhost:4200]
 
