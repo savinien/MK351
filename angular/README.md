@@ -4,10 +4,11 @@
 1. [Basic overview of an angular app](#ngbas)
 2. [Start an Angular project](#ngstart)
 3. [A simple example step by step](#ngex)
-4. [Angular components](#ngcomp)
-5. [Angular modules](#ngmod)
-6. [Angular services](#ngservice)
-7. [Angular router and navigation](#ngroute)
+4. [Angular modules](#ngmod)
+5. [Angular components](#ngcomp)
+6. [Templates, directives, and data binding](#ngtemp)
+7. [Angular services](#ngservice)
+8. [Angular router and navigation](#ngroute)
 
 
 Main reference [angular documentation](https://angular.io/docs), in particular the tutorial.
@@ -26,18 +27,23 @@ To check which version of angular you've got installed, type in `ng version`.
 
 Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.
 
-The basic building blocks of an Angular application are **NgModules**, which provide a compilation context for **components**. NgModules collect related code into functional sets; an Angular app is defined by a set of NgModules. An app always has at least a *root module* that enables bootstrapping, and typically has many more feature modules.
+The basic building blocks of an Angular application are **NgModules**, which provide a compilation context for **components**. 
+NgModules collect related code into functional sets; an Angular app is defined by a set of NgModules. 
+An app always has at least a *root module*, and typically has many more feature modules.
 
 - Components define *views*, which are sets of screen elements that Angular can choose among and modify according to your program *logic* and *data*.
 - Components use **services**, which provide specific functionality not directly related to views. Service providers can be injected into components as dependencies, making your code modular, reusable, and efficient.
 
 Both components and services are simply classes, with *decorators* that mark their type and provide metadata that tells Angular how to use them.
 
-The metadata for a component class associates it with a template that defines a view. A template combines ordinary HTML with Angular **directives** and **binding markup** that allow Angular to modify the HTML before rendering it for display.
+The metadata for a component class associates it with a template that defines a view. 
+A template combines ordinary HTML with Angular **directives** and **binding markup** that allow Angular to modify the HTML before rendering it for display.
 
 The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection*.
 
-An app's components typically define many views, arranged hierarchically. Angular provides the **Router** service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
+An app's components typically define many views, arranged hierarchically. 
+Angular provides the **Router** service to help you define navigation paths among views. 
+The router provides sophisticated in-browser navigational capabilities.
 
 
 <a name="ngstart"></a>
@@ -65,51 +71,8 @@ Open the chrome developer tools (View/Developer/Developer tools) to inspect the 
 ## 3. A simple example step by step
 
 
-
-<a name="ngcomp"></a>
-## 4. Angular components
-Components are the building blocks of angular apps. A component can be viewed as an extension of an html element: it encapsulates the data, the html template, and the logic for a view. A component is a TypeScript class with an HTML template and an optional set of CSS styles that control a part of the screen.
-
-Components are the most important concept in Angular 6. An Angular 6 application is basically a tree of components with a root component (the `AppComponent`). The root component is the one contained in the bootstrap array in the main NgModule module `app.module.ts`.
-
-One important aspect of components is re-usability. A component can be re-used throughout the application and even in other applications.
-Common and repeatable code that performs a certain task can be encapsulated into a re-usable component that can be called whenever we need the functionality it provides.
-
-To create a new component type in:
-- `ng generate component user`
-
-this creates a new `UserComponent`, a set of 3 files:
-- `user.component.ts`: the logic of your component
-- `user.component.html`: the template/view of your component
-- `user.component.css`: the style of your component
-which are stored in a folder `./user/`.
-This component is automatically **imported** and **declared** in the main app module `app.module.ts`.
-
-It is good practice to have your components in one (or more) specific folder(s), like `./components/`. To do this type in:
-- `ng generate component components/user`
-
-In this case, `app.module.ts` will have been updated as follows:
-```ts
-...
-import { UserComponent } from './components/user/user.component';
-...
-@NgModule({
-  declarations: [
-    ...
-    UserComponent,
-    ...
-  ],
-  ...
-})
-...  
-```
-
-
-TODO: declaration in modules, appmodule, or other module
-
-
 <a name="ngmod"></a>
-## 5. Angular modules
+## 4. Angular modules
 
 Angular apps are modular and Angular has its own modularity system called NgModules. 
 Organizing your code into distinct functional modules helps in managing development of complex applications, and in designing for reusability.
@@ -149,20 +112,74 @@ import { BrowserModule } from '@angular/platform-browser';
 export class AppModule { }
 ```
 
+<a name="ngcomp"></a>
+## 5. Angular components
+Components are the building blocks of angular apps. 
+A component can be viewed as an extension of an html element: it encapsulates the **data**, the **view** (the html template and css style), and the **logic** for a view (ts code). 
+A component is a TypeScript class with an HTML template and an optional set of CSS styles that control a part of the screen.
+
+Components are the most important concept in Angular 6. An Angular 6 application is basically a tree of components with a root component (the `AppComponent`). The root component is the one contained in the `bootstrap` array in the main NgModule module `app.module.ts`.
+
+One important aspect of components is re-usability. A component can be re-used throughout the application and even in other applications.
+Common and repeatable code that performs a certain task can be encapsulated into a re-usable component that can be called whenever we need the functionality it provides.
+
+To create a new component type in:
+- `ng generate component user`
+
+this creates a new `UserComponent`, a set of 3 files:
+- `user.component.ts`: the logic of your component
+- `user.component.html`: the template/view of your component
+- `user.component.css`: the style of your component
+which are stored in a folder `./user/`.
+This component is automatically **imported** and **declared** in the main app module `app.module.ts`.
+
+It is good practice to have your components in one (or more) specific folder(s), like `./components/`. To do this type in:
+- `ng generate component components/user`
+
+In this case, `app.module.ts` will have been updated as follows:
+```ts
+...
+import { UserComponent } from './components/user/user.component';
+...
+@NgModule({
+  declarations: [
+    ...
+    UserComponent,
+    ...
+  ],
+  ...
+})
+...  
+```
+
+
+TODO: declaration in modules, appmodule, or other module
+
+
+<a name="ngtemp"></a>
+## 6. Templates, directives, and data binding
+
+
 
 <a name="ngservice"></a>
-## 6. Angular modules
+## 7. Angular services
+Angular Services have responsibility to provide application data/business logic to components. 
 
-Angular Services have responsibility to provide application data/business logic to components. Components should take/provide data to service and function as glue between view and service. It is service who can decide whether to provide mock data or go to server and fetch data from database/file/another service(s) etc.
+For data or logic that isn't associated with a specific view, and that you want to share across components, you create a service class. 
+A service class definition is immediately preceded by the `@Injectable()` decorator. 
+The decorator provides the metadata that allows your service to be injected into client components as a dependency.
 
-Feature specific micro service gets built. For example, if your system have Login, SignUp, Dashboard components then you shall build LoginService, SignUpService, DashboardService and so on. Each service shall contain functionality required for specific targeted component.
+Dependency injection lets you keep your component classes lean and efficient. 
+They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 
-TODO: best practice, declaration, dependency injection
+You should build feature specific micro services. 
+For example, if your system have Login, SignUp, Dashboard components then you shall build LoginService, SignUpService, DashboardService and so on. 
+Each service shall contain functionality required for specific targeted component.
 
 
 
 
 <a name="ngroute"></a>
-## 7. Angular router and navigation
+## 8. Angular router and navigation
 
 TODO: ng start myapp --routing, declarations, navigation (nav-link in html, and in ts), RouterModule, RouterEvents
