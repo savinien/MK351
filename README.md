@@ -3,4 +3,4 @@ emlyon course MK351: "Mobile Apps Dev"
 
 Dear class, welcome to this tutorial!
 
-Here I am on Elea's branch...
+Here I am on Elea's branch...!
