@@ -24,7 +24,7 @@ To check which version of angular you've got installed, type in `ng version`.
 <a name="ngbas"></a>
 ## 1. Basic overview of an angular app
 
-An angular app can be seen as a tree of components. There is a root component, namely the AppComponent. 
+An angular app can be seen as a tree of components. There is a root component, namely the AppComponent. Components are
 
 
 
@@ -76,14 +76,14 @@ This component is automatically **imported** and **declared** in the main app mo
 It is good practice to have your components in one (or more) specific folder(s), like `./components/`. To do this type in:
 - `ng generate component components/user`
 
-In this case, `app.module.ts` will contain have been updated as follows:
+In this case, `app.module.ts` will have been updated as follows:
 ```ts
 ...
 import { UserComponent } from './components/user/user.component';
 ...
 @NgModule({
   declarations: [
-    AppComponent,
+    ...
     UserComponent,
     ...
   ],
@@ -100,6 +100,11 @@ TODO: declaration in modules, appmodule, or other module
 ## 5. Angular modules
 A module is a container for a group or related components.
 Each angular app has at least one module, namely `app.module`.
+
+The decorator of a module is `@NgModule({})`, its properties are among others:
+- `declaration`: the list of components it is made of
+- `imports`: the list of modules it imports
+- `providers`: the list of services it imports/uses
 
 
 
@@ -120,4 +125,4 @@ TODO: best practice, declaration, dependency injection
 <a name="ngroute"></a>
 ## 7. Angular router and navigation
 
-TODO: ng start myapp --routing, declarations, navigation, RouterModule, RouterEvents
+TODO: ng start myapp --routing, declarations, navigation (nav-link in html, and in ts), RouterModule, RouterEvents
