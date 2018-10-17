@@ -24,8 +24,20 @@ To check which version of angular you've got installed, type in `ng version`.
 <a name="ngbas"></a>
 ## 1. Basic overview of an angular app
 
-An angular app can be seen as a tree of components. There is a root component, namely the AppComponent. Components are
+Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.
 
+The basic building blocks of an Angular application are **NgModules**, which provide a compilation context for **components**. NgModules collect related code into functional sets; an Angular app is defined by a set of NgModules. An app always has at least a *root module* that enables bootstrapping, and typically has many more feature modules.
+
+- Components define *views*, which are sets of screen elements that Angular can choose among and modify according to your program *logic* and *data*.
+- Components use **services**, which provide specific functionality not directly related to views. Service providers can be injected into components as dependencies, making your code modular, reusable, and efficient.
+
+Both components and services are simply classes, with *decorators* that mark their type and provide metadata that tells Angular how to use them.
+
+The metadata for a component class associates it with a template that defines a view. A template combines ordinary HTML with Angular **directives** and **binding markup** that allow Angular to modify the HTML before rendering it for display.
+
+The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection*.
+
+An app's components typically define many views, arranged hierarchically. Angular provides the **Router** service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
 
 
 <a name="ngstart"></a>
@@ -98,17 +110,45 @@ TODO: declaration in modules, appmodule, or other module
 
 <a name="ngmod"></a>
 ## 5. Angular modules
-A module is a container for a group or related components.
-Each angular app has at least one module, namely `app.module`.
 
-The decorator of a module is `@NgModule({})`, its properties are among others:
-- `declaration`: the list of components it is made of
-- `imports`: the list of modules it imports
-- `providers`: the list of services it imports/uses
+Angular apps are modular and Angular has its own modularity system called NgModules. 
+Organizing your code into distinct functional modules helps in managing development of complex applications, and in designing for reusability.
 
+NgModules are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities. 
+They can contain components, service providers, and other code files whose scope is defined by the containing NgModule. 
+They can import functionality that is exported from other NgModules, and export selected functionality for use by other NgModules.
 
+Every Angular app has at least one NgModule class, the *root module*, which is conventionally named AppModule and resides in a file named `app.module.ts`. 
 
-TODO: declaration of modules, import, export
+While a small application might have only one NgModule, most apps have many more feature modules. 
+The root NgModule for an app is so named because it can include child NgModules in a hierarchy of any depth.
+
+An NgModule is defined by a class decorated with `@NgModule()`. 
+The `@NgModule()` decorator is a function that takes a single metadata object, whose properties describe the module. 
+The most important properties are as follows.
+
+- `declarations`: the list of components it is made of (may also include directives, pipes, etc).
+
+- `exports`: the subset of declarations that should be visible and usable in the component templates of other NgModules.
+
+- `imports`: the list of modules it imports (other modules whose exported classes are needed by component templates declared in this NgModule)
+
+- `providers`: the list of services it imports/uses (they become accessible in all parts of the app)
+
+Here's a simple root NgModule definition (`app.module.ts`):
+```ts
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+@NgModule({
+  imports:      [ BrowserModule ],
+  providers:    [ Logger ],
+  declarations: [ AppComponent ],
+  exports:      [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+
 
 <a name="ngservice"></a>
 ## 6. Angular modules
