@@ -32,20 +32,20 @@ An angular app can be seen as a tree of components. There is a root component, n
 ## 2. Start an angular project
 
 **Create** a new angular project:
-+ `ng new myapp`
+- `ng new myapp`
 
-this creates a folder `./myapp` with the angular project, named **myapp**, in it, then
-+ `cd myapp` 
+this creates a folder `./myapp/` with the angular project, named **myapp**, in it. Then
+- `cd myapp` 
 
-to navigate inside your project's folder
-+ `atom .` 
+to navigate inside your project's folder, then
+    `atom .` 
 
-to edit the project with atom
+to edit the project with atom.
 
 **Serve** the project: type this within `myapp` folder
-+ `ng serve`
+    `ng serve`
 
-This will launch the application on your browser. The app will be running from [http://localhost:4200].
+This will launch the application on your browser. The app will be running [http://localhost:4200]() from  [http://localhost:4200].
 Open the chrome developer tools (View/Developer/Developer tools) to inspect the app and follow it running on the console
 
 
