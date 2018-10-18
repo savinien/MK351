@@ -114,7 +114,45 @@ Open up the `user.component.html` file and replace the boiler plate code by:
   </ul>
 </div>
 ```
-and add properties `name`, `age`, `email`, `adress` in `user.component.ts` and initialize them:
+and in `user.component.ts` add properties `name`, `age`, `email`, `adress`  and initialize them in `ngOnInit()`:
+```ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})
+export class UserComponent implements OnInit {
+
+  name:string;
+  age:number;
+  email:string;
+  address:Address;
+
+  constructor() {
+    console.log("constructor ran...")
+  }
+
+  ngOnInit() {
+    console.log("ngOnInit ran...")
+    this.name = "Raoul Dupond";
+    this.age = 30;
+    this.email = 'rdup@yahoo.de';
+    this.address = {
+      street: '50 fake St',
+      city: 'Tucson',
+      state: 'AZ'
+    };
+  }
+}
+
+interface Address{
+  street: string,
+  city: string,
+  state: string
+}
+```
 
 
 
