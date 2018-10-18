@@ -70,6 +70,55 @@ Open the chrome developer tools (View/Developer/Developer tools) to inspect the 
 <a name="ngex"></a>
 ## 3. A simple example step by step
 
+We'll make a simple app to illustrate some basic features of angular.
+First create a UserComponent, in a separated folder named "components":
+```
+ng generate component components/user
+```
+You now see a folder `src/app/components/user` with three files namely `user.component.html`, `user.component.ts`, `user.component.css` which are the template, the ts code, and the css style of your component.
+In `user.component.ts`, you have you component's ts class ready for export, preceeded by some import statements, and a *decorator* `@Component` which contains some metadata that angular needs to treat this as a component.
+```ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})
+export class UserComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+The property `selector` of the decorator is a CSS selector that you'll use to create and insert an instance of this component in any HTML template. The other two properties are the adresses of the component's template and style.
+Open up the `app.component.html` file and replace everything with:
+```html
+<h1>Welcome to our myapp!</h1>
+<p>Here we import the component UserComponent</p>
+<app-user></app-user>
+<p>Here we import a second (independant) instance of the component UserComponent<p>
+<app-user></app-user>
+```
+Open up the `user.component.html` file and replace the boiler plate code by:
+```html
+<div>
+    <h1>Hello {{name}}!</h1>
+  <ul>
+    <li>Age: {{age}}</li>
+    <li>Email: {{email}}</li>
+    <li>{{address.street}} {{address.city}}, {{address.state}}</li>
+  </ul>
+</div>
+```
+and add properties `name`, `age`, `email`, `adress` in `user.component.ts` and initialize them:
+
+
+
+
 
 <a name="ngmod"></a>
 ## 4. Angular modules
@@ -187,7 +236,8 @@ This example shows some of the most useful @Component configuration options:
 In addition, you may add:
 - `providers`: An array of providers for services that the component requires.
 
-
+Finally the `ngOnInit()` method is a special angular method which gets executed when the component is initialized. 
+You write there all initialisations you need to setup your component (you do that here, *not* in the constructor).
 
 
 
