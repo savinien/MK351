@@ -126,38 +126,83 @@ Common and repeatable code that performs a certain task can be encapsulated into
 To create a new component type in:
 - `ng generate component user`
 
-this creates a new `UserComponent`, a set of 3 files:
-- `user.component.ts`: the logic of your component
-- `user.component.html`: the template/view of your component
-- `user.component.css`: the style of your component
-which are stored in a folder `./user/`.
-This component is automatically **imported** and **declared** in the main app module `app.module.ts`.
-
-It is good practice to have your components in one (or more) specific folder(s), like `./components/`. To do this type in:
+It is good practice to have your components in one (or more) specific folder(s), like `src/app/components/`. To do this type in:
 - `ng generate component components/user`
 
-In this case, `app.module.ts` will have been updated as follows:
+On your console you'll see:
+```
+mac20087:myapp savinien$ ng generate component components/user
+CREATE src/app/components/user/user.component.css (0 bytes)
+CREATE src/app/components/user/user.component.html (23 bytes)
+CREATE src/app/components/user/user.component.spec.ts (614 bytes)
+CREATE src/app/components/user/user.component.ts (261 bytes)
+UPDATE src/app/app.module.ts (399 bytes)
+```
+The `ng generate component` command has created a set of 3 files for your newly generated component `UserComponent`:
+- `user.component.ts`: the logic of your component
+- `user.component.html`: the template of your component
+- `user.component.css`: the style of your component
+
+They are stored in the folder `src/app/components/user/`.
+In addition, as mentioned in the last line `UPDATE src/app/app.module.ts (399 bytes)` your AppModule is updated: `UserComponent` is automatically **imported** and **declared** in the main app module `app.module.ts`, which has been updated as follows:
 ```ts
-...
+/* ... */
 import { UserComponent } from './components/user/user.component';
-...
+/* ... */
 @NgModule({
   declarations: [
-    ...
+    /* ... */
     UserComponent,
-    ...
+    /* ... */
   ],
-  ...
+  /* ... */
 })
-...  
+/* ... */
 ```
 
+In `user.component.ts`, you see the ts class at the bottom, preceded by a *component decorator* `@Component`, and some import statements:
+```ts
+import { Component, OnInit } from '@angular/core';
 
-TODO: declaration in modules, appmodule, or other module
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})
+export class UserComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+This example shows some of the most useful @Component configuration options:
+
+- `selector`: A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an app's HTML contains <app-user></app-user>, then Angular inserts an instance of the UserComponent view between those tags.
+- `templateUrl`: The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the template property. This template defines the component's host view.
+- `styleUrls`: the module-relative address of ths CSS style for the HTML template
+
+In addition, you may add:
+- `providers`: An array of providers for services that the component requires.
+
+
+
+
 
 
 <a name="ngtemp"></a>
 ## 6. Templates, directives, and data binding
+A template combines HTML with Angular markup that can modify HTML elements before they are displayed. 
+Template directives provide program logic, and binding markup connects your application data and the DOM. 
+There are two types of data binding:
+
+- **event binding** lets your app respond to user input in the target environment by updating your application data.
+- **property binding** lets you interpolate values that are computed from your application data into the HTML.
+
+Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic. 
+Angular supports two-way data binding, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
 
 
 
