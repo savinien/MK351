@@ -209,7 +209,7 @@ and in `user.component.ts`, add a methode `changeName()` within the class, after
   }
 ```
 When you input a new name in the form and press enter (triggers a `submit` event), you are now updating the property `name`.
-The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template.
+The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template (like passing it as an argument to the method `changeName()` via the submit event in the form).
 
 
 <a name="ngmod"></a>
