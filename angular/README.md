@@ -64,7 +64,8 @@ to edit the project with atom.
     `ng serve`
 
 This will launch the application on your browser. The app will be running from [http://localhost:4200]().
-Open the chrome developer tools (View/Developer/Developer tools) to inspect the app and follow it running on the console
+Open the chrome developer tools (View/Developer/Developer tools) to inspect the app and follow it running on the console.
+Whenever you change and save a file in your project, you'll see the resulting changes on chrome.
 
 
 <a name="ngex"></a>
@@ -153,9 +154,62 @@ interface Address{
   state: string
 }
 ```
+The curly braces around the properties (like `{{name}}`) in the template is called **data binding**, you are binding the value of the properties defined in your ts class to your template.
+Let's add some styling in `user.component.css`:
+```css
+.user {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 20em;
+  /*text-align: center;*/
+  background-color: #FFFF99;
+}
 
+.user li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
 
+.user li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+```
+Now we'll make the page more interactive, by adding a form to change the user name, in 'user.component.html`:
+```ts
+<div class="user">
+    <h1>Hello {{name}}!</h1>
 
+  <form (submit)="changeName(newName.value)">
+    <div>
+      <label for="newName">Input new name: </label>
+      <input type="text" #newName>
+    </div>
+  </form>
+
+  <ul>
+    <li>Age: {{age}}</li>
+    <li>Email: {{email}}</li>
+    <li>{{address.street}} {{address.city}}, {{address.state}}</li>
+  </ul>
+  
+</div>
+```
+and in `user.component.ts`, add a methode `changeName()` within the class, after `ngOnInit()`:
+```ts
+  changeName(newName: string){
+    this.name = newName;
+  }
+```
+When you input a new name in the form and press enter (triggers a `submit` event), you are now updating the property `name`.
+The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template.
 
 
 <a name="ngmod"></a>
