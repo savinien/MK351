@@ -211,7 +211,10 @@ and in `user.component.ts`, add a methode `changeName()` within the class, after
 When you input a new name in the form and press enter (triggers a `submit` event), you are now updating the property `name`.
 The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template (like passing it as an argument to the method `changeName()` via the submit event in the form).
 
-We now add a functionality to toggle edit the user's details. The **directive** `*ngIf*` allows you to display these details according to a boolean property `idEdit`. The `ngModel` directive allows you to change the user's properties, binding them on the template via an input form to their values in your ts code. To use this directive, you have to import is in `app.module.ts`: ```ts import { NgModule } from '@angular/core';```
+We now add a functionality to toggle edit the user's details. The **directive** `*ngIf*` allows you to display these details according to a boolean property `idEdit`. The `ngModel` directive allows you to change the user's properties, binding them on the template via an input form to their values in your ts code. To use this directive, you have to import is in `app.module.ts`:
+```ts 
+import { NgModule } from '@angular/core';
+```
 In `user.component.html`, 
 ```html
   <button (click)="toggleEdit()">Edit User</button>
@@ -243,9 +246,13 @@ In `user.component.html`,
   </div>
 </div>
 ```
-In `user.component.ts`, add the property `isEdit:boolean = false;` before the constructor, and a method after `ngOnInit()`
+In `user.component.ts`, add the property 
 ```ts
-toggleEdit(){
+isEdit:boolean = false;
+``` 
+before the constructor, and a method after `ngOnInit()`
+```ts
+  toggleEdit(){
     this.isEdit = !this.isEdit;
     console.log(this.isEdit);
   }
@@ -282,6 +289,87 @@ In `user.component.html` display the hobbies with the directive `*ngFor` which a
       <button (click)="deleteHobby(hobby)">X</button>
     </li>
   </ul>
+```
+We now generate a service to fetch posts from a remote server (a moke server [https://jsonplaceholder.typicode.com]().
+At the command line:
+```
+ng generate service services/data
+```
+which creates a `DataService`, *i.e.* a `data.service.ts` file in `src/app/services/`. You have to import it to `app.module.ts` and declare it as a provider in its `@NgModule` decorator:
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+import { UserComponent } from './components/user/user.component';
+
+import { DataService } from './services/data.service';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    UserComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule
+  ],
+  providers: [DataService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+(notice we've imported the `HttpModule` we'll be using soon).
+Now fill in `data.service.ts` as follows:
+```ts
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
+
+@Injectable()
+export class DataService {
+
+  constructor(public http:Http) {
+    console.log("Data service connected...");
+  }
+
+  getPosts(){
+    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+      .pipe(map(res => res.json()));
+  }
+}
+```
+where we've created a `getPosts()` method which connects to the remote server, waits for its response and returns the result. It uses the `Http` service of angular via *dependency injection* (an instance is passed to its constructor: `constructor(public http:Http)`).
+To use this service in `UserComponent` we have to import it and inject it as a dependency (to passe an instance of the DataService class to the constructor):
+```ts
+import { DataService } from '../../services/data.service';
+/* ... */
+constructor(private dataService:DataService){
+}
+```
+We finally add a property `posts:Post[];` and define an interface `Post` after the `UserComponent` class:
+```ts
+interface Post{
+  id: number,
+  title: string,
+  body: string,
+  userId: number
+}
+```
+and initialise the posts in `ngOnInit`, by subscribing to the service and waiting for the result to be fetched:
+```ts
+    this.dataService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+    });
+```
+Now we can display the posts on our template `user.component.html`:
+```html
+  <h2>Posts</h2>
+  <div *ngFor="let post of posts">
+    <h4>{{post.title}}</h4>
+    <p>{{post.body}}</p>
+  </div>
 ```
 
 
