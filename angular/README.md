@@ -340,14 +340,15 @@ export class DataService {
   }
 }
 ```
-where we've created a `getPosts()` method which connects to the remote server, waits for its response and returns the result. It uses the `Http` service of angular via *dependency injection* (an instance is passed to its constructor: `constructor(public http:Http)`).
-To use this service in `UserComponent` we have to import it and inject it as a dependency (to passe an instance of the DataService class to the constructor):
+where we've created a `getPosts()` method which connects to the remote server, waits for its response and returns the result. It uses the `Http` service of angular via *dependency injection* (an instance is passed to its constructor: `constructor(public http:Http)`, and we're now able to use it as `this.http`).
+To use this service in `UserComponent` we have to import it and inject it as a dependency in its constructor
 ```ts
 import { DataService } from '../../services/data.service';
 /* ... */
 constructor(private dataService:DataService){
 }
 ```
+which allows us to use is as `this.dataService`.
 We finally add a property `posts:Post[];` and define an interface `Post` after the `UserComponent` class:
 ```ts
 interface Post{
@@ -372,7 +373,85 @@ Now we can display the posts on our template `user.component.html`:
   </div>
 ```
 
+Finally we create a new component `AboutComponent`:
+```
+ng generate component components/about`
+```
+In `about.component.html` replace the boiler code by:
+```html
+<h2>{{ title }}</h2>
+<h3>{{elements.length}} Elements:</h3>
+<ul>
+  <li *ngFor="let elt of elements"> {{ elt }} </li>
+</ul>
+```
+and in `about.component.ts`:
+```ts
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
+})
+export class AboutComponent implements OnInit {
+  title: string = "About our app";
+  elements: string[] = ["element 1", "element 2", "element 3"];
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+  
+  getTitle(){
+    return this.title
+  }
+}
+```
+And we add navigation to our app as follows. 
+Replace the `app.component.ts` code by:
+```html
+<ul>
+  <li> <a routerLink="">Home</a></li>
+  <li> <a routerLink="about">About</a></li>
+</ul>
+<router-outlet></router-outlet>
+```
+which will allow you to navigate from the Home page displaying the `UserComponent` to and About page displaying the `AboutComponent`.
+In order to do this we have to set up a Router in `app.module.ts`, defining a constant array of routes linking our components to their urls:
+```ts
+mport { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { UserComponent } from './components/user/user.component';
+import { AboutComponent } from './components/about/about.component';
+
+import { DataService } from './services/data.service';
+
+const appRoutes: Routes = [
+  {path:'', component:UserComponent},
+  {path:'about', component:AboutComponent}
+]
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    UserComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  providers: [DataService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
 <a name="ngmod"></a>
 ## 4. Angular modules
