@@ -211,6 +211,80 @@ and in `user.component.ts`, add a methode `changeName()` within the class, after
 When you input a new name in the form and press enter (triggers a `submit` event), you are now updating the property `name`.
 The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template (like passing it as an argument to the method `changeName()` via the submit event in the form).
 
+We now add a functionality to toggle edit the user's details. The **directive** `*ngIf*` allows you to display these details according to a boolean property `idEdit`. The `ngModel` directive allows you to change the user's properties, binding them on the template via an input form to their values in your ts code. To use this directive, you have to import is in `app.module.ts`: ```ts import { NgModule } from '@angular/core';```
+In `user.component.html`, 
+```html
+  <button (click)="toggleEdit()">Edit User</button>
+<div *ngIf="isEdit">
+  <h2>Edit User</h2>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="name" name="name">
+  </div>
+  <div>
+    <label for="age">Age:</label>
+    <input type="number" [(ngModel)]="age" name="age">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" [(ngModel)]="email" name="email">
+  </div>
+  <div>
+    <label for="street">street:</label>
+    <input type="text" [(ngModel)]="address.street" name="street">
+  </div>
+  <div>
+    <label for="city">city:</label>
+    <input type="text" [(ngModel)]="address.city" name="city">
+  </div>
+  <div>
+    <label for="state">state:</label>
+    <input type="text" [(ngModel)]="address.state" name="state">
+  </div>
+</div>
+```
+In `user.component.ts`, add the property `isEdit:boolean = false;` before the constructor, and a method after `ngOnInit()`
+```ts
+toggleEdit(){
+    this.isEdit = !this.isEdit;
+    console.log(this.isEdit);
+  }
+```
+We next add another property `hobbies:string[];` (an array of string) before the construtor, initialise it in the `ngOnInit()` method: `this.hobbies = ['Fool around', 'Procastinate', 'Watch youtube'];`, and methods to add and delete hobbies after `ngOnInit()`:
+```ts
+  addHobby(hobby){
+    console.log(hobby);
+    //this.hobbies.push(hobby); // add it at the array's end
+    this.hobbies.unshift(hobby); // add it at the array's begining
+  }
+
+  deleteHobby(hobby){
+    console.log(hobby);
+    for (let i=0; i < this.hobbies.length; i++){
+      if (this.hobbies[i] == hobby){
+        this.hobbies.splice(i,1);
+      }
+    }
+  }
+```
+In `user.component.html` display the hobbies with the directive `*ngFor` which allows you to iterate over each hobby in the hobbies array:
+```html
+  <h3>Hobbies</h3>
+  <form (submit)="addHobby(hobby.value)">
+    <div>
+      <label for="hobby">Input hobby: </label>
+      <input type="text" #hobby>
+    </div>
+  </form>
+  <ul>
+    <li *ngFor="let hobby of hobbies; let i = index">
+      {{i+1}}: {{hobby}}
+      <button (click)="deleteHobby(hobby)">X</button>
+    </li>
+  </ul>
+```
+
+
 
 <a name="ngmod"></a>
 ## 4. Angular modules
