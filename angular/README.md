@@ -452,6 +452,22 @@ const appRoutes: Routes = [
 })
 export class AppModule { }
 ```
+The router can be called from a method too. In `about.component.html` add a button to navigate back to the home page:
+```html
+<button type="button" name="button" (click)="backHome()">Back Home</button>
+```
+and in `about.component.ts` import the Router and inject it, and write the method `backHome`:
+```ts
+import { Router } from '@angular/router';
+  /*...*/
+  constructor(public router:Router) { }
+  /*...*/
+  backHome(){
+    this.router.navigate(['']);
+    //this.router.navigateByUrl(""); // navigation by url
+  }
+```
+indeed the home page was set in the Routes paths as `""`.
 
 <a name="ngmod"></a>
 ## 4. Angular modules
