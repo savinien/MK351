@@ -601,7 +601,7 @@ There are two types of data binding:
 - **event binding** lets your app respond to user input in the target environment by updating your application data.
 - **property binding** lets you interpolate values that are computed from your application data into the HTML.
 
-![component-binding](component-binding.png)
+![component-binding](component-databinding.png)
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic. 
 Angular supports two-way data binding, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
