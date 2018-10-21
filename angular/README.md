@@ -604,9 +604,17 @@ There are two types of data binding:
 ![component-binding](component-databinding.png)
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic. 
-Angular supports two-way data binding, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
 
-We've seen a couple of examples of angular directives in the [example](#ngex) above:
+Angular supports *two-way data binding*, a mechanism for coordinating the parts of a template with the parts of a component.
+This means that changes in the DOM, such as user choices, are also reflected in your program data.
+Add binding markup to the template HTML to tell Angular how to connect both sides.
+
+The following diagram shows the four forms of data binding markup. 
+Each form has a direction: to the DOM, from the DOM, or both.
+
+![Data binding](databinding.png)
+
+We've seen a couple of examples of angular **directives** in the [example](#ngex) above:
 - `*nfIf`: to display or hide a component depending on a boolean property, for instance
 - `*ngFor`: to display a list of html elements or components
 
@@ -616,15 +624,6 @@ For instance, the following list will be displayed if the value returned by the 
     <li *ngFor="let item of itemList; let i=index">{{i+1}}: {{item}}</li>
 </ul>
 ```
-
-**Data binding**
-Angular supports two-way data binding, a mechanism for coordinating the parts of a template with the parts of a component. 
-Add binding markup to the template HTML to tell Angular how to connect both sides.
-
-The following diagram shows the four forms of data binding markup. 
-Each form has a direction: to the DOM, from the DOM, or both.
-
-![Data binding](databinding.png)
 
 
 
