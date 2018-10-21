@@ -616,6 +616,8 @@ For instance, the following list will be displayed if the value returned by the 
 ```
 
 
+![Data binding](databinding.png)
+
 
 
 <a name="ngservice"></a>
