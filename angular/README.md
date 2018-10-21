@@ -12,6 +12,7 @@
 
 
 Main reference [angular documentation](https://angular.io/docs), in particular the tutorial.
+Once you've assimilated this material, while coding you may refer to the [Angular cheat sheet](https://angular.io/guide/cheatsheet) for quick review.
 
 <a name="ngsetup"></a>
 ## 0. Setup
@@ -641,6 +642,29 @@ They don't fetch data from the server, validate user input, or log directly to t
 You should build feature specific micro services. 
 For example, if your system have Login, SignUp, Dashboard components then you shall build LoginService, SignUpService, DashboardService and so on. 
 Each service shall contain functionality required for specific targeted component.
+
+To generate a service:
+```
+ng generate service services/name
+```
+will generate a `NameService`, *i.e.* a `name.service.ts` file within the `src/app/services` folder.
+You will have to declare and register your service within the module where you'll be using it.
+If you'll need it accross your whole app, do this in `app.module.ts`:
+```ts
+/*...*/
+import { NameService } from './services/name.service';
+
+@NgModule({
+  /*...*/
+  providers: [
+    NameService
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+TODO: import, dependency injection
 
 
 
