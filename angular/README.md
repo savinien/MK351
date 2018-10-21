@@ -615,7 +615,12 @@ For instance, the following list will be displayed if the value returned by the 
 </ul>
 ```
 
+**Data binding**
+Angular supports two-way data binding, a mechanism for coordinating the parts of a template with the parts of a component. 
+Add binding markup to the template HTML to tell Angular how to connect both sides.
 
+The following diagram shows the four forms of data binding markup. 
+Each form has a direction: to the DOM, from the DOM, or both.
 ![Data binding](databinding.png)
 
 
