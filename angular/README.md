@@ -418,6 +418,7 @@ Replace the `app.component.ts` code by:
 <router-outlet></router-outlet>
 ```
 which will allow you to navigate from the Home page displaying the `UserComponent` to and About page displaying the `AboutComponent`.
+The `router-outlet` markup will be the recipient for the component you'll navigate to.
 In order to do this we have to set up a Router in `app.module.ts`, defining a constant array of routes linking our components to their urls:
 ```ts
 mport { BrowserModule } from '@angular/platform-browser';
@@ -602,6 +603,18 @@ There are two types of data binding:
 
 Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, according to your program data and logic. 
 Angular supports two-way data binding, meaning that changes in the DOM, such as user choices, are also reflected in your program data.
+
+We've seen a couple of examples of angular directives in the [example](#ngex) above:
+- `*nfIf`: to display or hide a component depending on a boolean property, for instance
+- `*ngFor`: to display a list of html elements or components
+
+For instance, the following list will be displayed if the value returned by the method `showList()` is true, in which case all items in the property `itemList` will be displayed:
+```html
+<ul *ngIf="showList()">
+    <li *ngFor="let item of itemList; let i=index">{{i+1}}: {{item}}</li>
+</ul>
+```
+
 
 
 
