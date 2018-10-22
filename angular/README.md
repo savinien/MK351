@@ -19,7 +19,7 @@ Once you've assimilated this material, while coding you may refer to the [Angula
 
 Install [nodejs](https://nodejs.org/en/download/).
 
-Install angular cli: `npm install -g @angular/cli`
+Install angular cli: `npm install -g @angular/cli` (on mac `sudo npm install -g @angular/cli`).
 
 To check which version of angular you've got installed, type in `ng version`.
 
