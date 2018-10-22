@@ -1,0 +1,13 @@
+"use strict";
+exports.__esModule = true;
+var user_1 = require("./user");
+var user1 = new user_1.User("Jeannot Lapin", "carrotes");
+user1.printUserInfo();
+var date = user1.getCreationDate("karot");
+console.log("creation date: ", date);
+date = user1.getCreationDate("carrotes");
+console.log("creation date: ", date);
+user1.updateSubscription("carrotes", "mykoupon");
+user1.updateSubscription("karot", "mycoupon");
+user1.updateSubscription("carrotes", "mycoupon");
+user1.printUserInfo();
