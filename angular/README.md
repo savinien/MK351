@@ -674,9 +674,18 @@ import { NameService } from './services/name.service';
 })
 export class AppModule { }
 ```
+To use this service in a component, import it and inject it as a dependency in your component's class constructor:
+```ts
+import { NameService } from '../../services/name.service'
+/*...*/
+export class YourComponent {
 
-TODO: import, dependency injection
-
+  constructor (private myService:NameService){}
+  /* ...
+  use the service as this.myService
+  ...*/  
+}
+```
 
 
 
