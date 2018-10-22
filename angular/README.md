@@ -211,6 +211,10 @@ and in `user.component.ts`, add a methode `changeName()` within the class, after
 ```
 When you input a new name in the form and press enter (triggers a `submit` event), you are now updating the property `name`.
 The variable `#newName` captures the user input. It is a *template variable* which can be used anywhere within the template (like passing it as an argument to the method `changeName()` via the submit event in the form).
+To have this work, you need to import the `FormsModule` into your `app.module.ts`:
+```ts
+import { FormsModule } from '@angular/forms';
+```
 
 We now add a functionality to toggle edit the user's details. The **directive** `*ngIf*` allows you to display these details according to a boolean property `idEdit`. The `ngModel` directive allows you to change the user's properties, binding them on the template via an input form to their values in your ts code. To use this directive, you have to import is in `app.module.ts`:
 ```ts 
