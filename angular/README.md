@@ -782,12 +782,12 @@ and in `user.component.ts` define the `goToAbout()` method as:
     //this.router.navigateByUrl("/about"); // navigation by url
   }
 ```
-(don't forget to import the `Router` module and inject it in the constructor).
+(don't forget to import `Router` and inject it in the constructor).
 
 
 If you want your app to have a built in router, you can start it as
 ```
 ng new myapp --routing
 ```
-in which case you'll have a separate `app-routing.module.ts` where you'll define your Routes instead of in your `app.module.ts`.
+in which case you'll have a separate `app-routing.module.ts` where you'll define your routes instead of in your `app.module.ts`.
 
