@@ -421,7 +421,7 @@ export class AboutComponent implements OnInit {
 }
 ```
 And we add navigation to our app as follows. 
-Replace the `app.component.ts` code by:
+Replace the `app.component.html` code by:
 ```html
 <ul>
   <li> <a routerLink="">Home</a></li>
@@ -473,7 +473,7 @@ and in `about.component.ts` import the Router and inject it, and write the metho
 ```ts
 import { Router } from '@angular/router';
   /*...*/
-  constructor(public router:Router) { }
+  constructor(private router:Router) { }
   /*...*/
   backHome(){
     this.router.navigate(['']);
@@ -692,4 +692,102 @@ export class YourComponent {
 <a name="ngroute"></a>
 ## 8. Angular router and navigation
 
-TODO: ng start myapp --routing, declarations, navigation (nav-link in html, and in ts), RouterModule, RouterEvents
+The Angular Router enables navigation from one view to the next as users perform application tasks (like change the URL, use the browser backbutton, click on a button, etc).
+The Angular Router is an optional service that presents a particular component view for a given URL. 
+It is not part of the Angular core, but it is in its own library package, @angular/router.
+Import what you need from it as you would from any other Angular package.
+```ts
+import { RouterModule, Routes, Router } from '@angular/router';
+```
+
+A router has no routes until you configure it. 
+You define them in `app.module.ts`, like in our [example](#ngbas) above:
+```ts
+/*...*/
+import { RouterModule, Routes } from '@angular/router';
+/*...*/
+
+const appRoutes: Routes = [
+  {path:'', component:UserComponent},
+  {path:'about', component:AboutComponent}
+]
+
+@NgModule({
+  /*...*/
+  imports: [
+    /*...*/
+    RouterModule.forRoot(appRoutes)
+  ],
+  /*...*/
+})
+export class AppModule { }
+```
+The `appRoutes` array of routes describes how to navigate.
+Pass it to the RouterModule.forRoot method in the module imports to configure the router.
+
+Each Route maps a URL path to a component. 
+(There are no leading slashes in the path; the router parses and builds the final URL for you, allowing you to use both relative and absolute paths when navigating between application views.)
+The empty path in the first route represents the default path for the application, the place to go when the path in the URL is empty, as it typically is at the start.
+
+**The order of the routes in the configuration matters** and this is by design. The router uses a **first-match wins** strategy when matching routes, so more specific routes should be placed above less specific routes.
+
+The `RouterOutlet` is a directive from the router library that is used like a component. 
+It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.
+```html
+<router-outlet></router-outlet>
+<!-- Routed components go here -->
+```
+Given the configuration above, when the browser URL for this application becomes `/about`, the router matches that URL to the route path `/about` and displays the `AboutComponent` as a sibling element to the `RouterOutlet` that you've placed in the host component's template.
+
+
+Now you have routes configured and a place to render them, but how do you navigate? 
+The URL could arrive directly from the browser address bar. 
+But most of the time you navigate as a result of some user action such as the click of an anchor tag.
+Consider the above example's template `app.component.html`
+```html
+<ul>
+  <li> <a routerLink="">Home</a></li>
+  <li> <a routerLink="about">About</a></li>
+</ul>
+<router-outlet></router-outlet>
+```
+The `RouterLink` directives on the anchor tags give the router control over those elements: it will display the `UserComponent` or `AboutComponent` in place of the `RouterOutlet`.
+
+To control navigation within a component ts class, you can to use the `Router.navigate()` and `Router.navigateByUrl()` methods.
+The `Router.navigate()` should be provided with an array of commands and a starting point (a starting URL from which to navigate by adding a path to it).
+The `Router.navigateByUrl()` should be provided with the absolute URL you want to navigate to.
+In the above example, in the `about.component.html` you have a button whose click triggers the `backHome()` method
+```html
+<button type="button" name="button" (click)="backHome()">Back Home</button>
+```
+and in `about.component.ts` import the Router and inject it, and write the method `backHome`:
+```ts
+import { Router } from '@angular/router';
+  /*...*/
+  constructor(private router:Router) { }
+  /*...*/
+  backHome(){
+    this.router.navigate(['']);
+    //this.router.navigateByUrl(""); // navigation by url
+  }
+```
+You could similarly add a button in `user.component.html`:
+```html
+<button type="button" name="button" (click)="goToAbout()">About</button>
+```
+and in `user.component.ts` define the `goToAbout()` method as:
+```ts
+  goToAbout(){
+    this.router.navigate(['/about']);
+    //this.router.navigateByUrl("/about"); // navigation by url
+  }
+```
+(don't forget to import the `Router` module and inject it in the constructor).
+
+
+If you want your app to have a built in router, you can start it as
+```
+ng new myapp --routing
+```
+in which case you'll have a separate `app-routing.module.ts` where you'll define your Routes instead of in your `app.module.ts`.
+
