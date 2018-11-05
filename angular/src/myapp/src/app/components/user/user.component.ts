@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   hobbies:string[];
   posts:Post[];
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService:DataService, private router:Router) {
     console.log("constructor ran...");
   }
 
@@ -57,6 +57,10 @@ export class UserComponent implements OnInit {
         this.hobbies.splice(i,1);
       }
     }
+  }
+
+  goToAbout(){
+    this.router.navigate(['/about'])
   }
 }
 

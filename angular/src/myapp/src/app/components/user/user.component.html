@@ -1,6 +1,8 @@
 <div class="user">
   <h1>Hello {{name}}!</h1>
 
+  <button type="button" (click)="goToAbout()">About</button>
+
   <form (submit)="changeName(newName.value)">
     <div>
       <label for="newName">Input new name: </label>
