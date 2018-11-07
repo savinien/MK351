@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      An example - local storage
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<!--
+  <form (submit)="addSentence(newSentence.value)">
+    <div>
+      <label for="newSentence">Input new sentence: </label>
+      <input type="text" #newSentence>
+    </div>
+  </form>
+ -->
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Input a sentence"
+              type="text"
+              [(ngModel)]="sentence" name="sentence">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button *ngIf="sentence"
+              shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=save()>
+              save sentences
+  </ion-button>
+
+  <ion-button shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=store()>
+              store sentences
+  </ion-button>
+
+  <ion-button shape="round"
+              color="primary"
+              fill="outline"
+              (click)=retrieve()>
+              retrieve sentences
+  </ion-button>
+
+  <ion-button shape="round"
+              color="danger"
+              fill="outline"
+              (click)=delete()>
+              delete sentences
+  </ion-button>
+
+  <div>
+    <ion-list>
+      <ion-item>SENTENCES:</ion-item>
+      <ion-item *ngFor="let sentence of data">{{sentence}}</ion-item>
+    </ion-list>
+  </div>
+
+<div>
+  <ion-list>
+    <ion-item>RETRIEVED SENTENCES:</ion-item>
+    <ion-item *ngFor="let sentence of storedData">
+      {{sentence}}
+    </ion-item>
+  </ion-list>
+</div>
+
+
+</ion-content>
