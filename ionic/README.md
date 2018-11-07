@@ -20,7 +20,7 @@ Install ionic: `npm install -g ionic`
 ## 1. ionic basics
 
 <a name="ionicstore"></a>
-## 1. ionic storage
+## 2. ionic storage
 
 Create a blank ionic project:
 ```
