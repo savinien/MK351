@@ -156,9 +156,7 @@ and in `home.page.html`:
 <div>
   <ion-list>
     <ion-item>RETRIEVED SENTENCES:</ion-item>
-    <ion-item *ngFor="let sentence of storedData">
-      {{sentence}}
-    </ion-item>
+    <ion-item *ngFor="let sentence of storedData">{{sentence}}</ion-item>
   </ion-list>
 </div>
 
