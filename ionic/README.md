@@ -4,6 +4,7 @@
 0. [Setup](#ionicsetup)
 1. [ionic basics](#ionicbas)
 2. [ionic storage](#ionicstore)
+3. [Using the phone camera](#camera)
 
 
 Main reference [ionic documentation](https://ionicframework.com/docs/), in particular the [tutorial](https://ionicframework.com/docs/intro/tutorial/).
@@ -162,4 +163,75 @@ and in `home.page.html`:
 
 
 </ion-content>
+```
+
+
+<a name="camera"></a>
+## 3. Using the phone camera
+
+Reference: [ionic camera native](https://ionicframework.com/docs/native/camera/).
+
+Create a new project: `ionic start appCamera blank --type=angular`, and cd into the project: `cd appCamera`.
+
+Add the android platform: `ionic cordova add platform android`
+
+Get the camera plugin: `ionic cordova plugin add cordova-plugin-camera` and install it in the project: `npm install --save @ionic-native/camera`.
+
+Import the plugin to the the appModule `app.module.ts`:
+```ts
+\*...*\
+import { Camera } from '@ionic-native/camera';
+\*...*\
+
+@NgModule({
+  \*...*\
+
+  providers: [
+    \*...*\
+    Camera,
+    \*...*\
+  ]
+  \*...*\
+})
+export class AppModule { }
+```
+
+On your home page, `home/home.page.ts`, import the camera provider and inject it into the constructor:
+```ts
+import { Component } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+
+constructor(private camera: Camera) { }
+
+}
+```
+
+On your home page template, `home.page.html`, create a button to take a picture and display the last picture taken:
+```html
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button (click)="takePicture()">Take a picture</button>
+  <div align="center">
+    <img src="{{ myPicture }}" alt="">
+  </div>
+</ion-content>
+
+```
+and code the `takePicture()` method and a property `myPicture` to display on the home template:
+```ts
+
 ```
