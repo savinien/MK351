@@ -228,16 +228,17 @@ On your home page template, `home.page.html`, create a button to take a picture 
 <ion-content padding>
   <button ion-button (click)="takePicture()">Take a picture</button>
   <div align="center">
-    <img src="{{ myPicture }}" alt="">
+    <ion-img src="{{ myPicture }}"></ion-img>
   </div>
 </ion-content>
 
 ```
-and code the `takePicture()` method and a property `myPicture` to display on the home template:
+and code the `takePicture()` method and a property `myPicture` to display the image on the home template:
 ```ts
 import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
+declare var window;
 
 @Component({
   selector: 'app-home',
@@ -259,7 +260,8 @@ export class HomePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-     this.myPicture = 'data:image/jpeg;base64,' + imageData;
+     //this.myPicture = 'data:image/jpeg;base64,' + imageData;
+     this.myPicture = window.Ionic.WebView.convertFileSrc(imageData);
      console.log("picture taken:", imageData);
     }, (err) => {
      console.log("error occured");
