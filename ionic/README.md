@@ -175,12 +175,14 @@ Create a new project: `ionic start appCamera blank --type=angular`, and cd into 
 
 Add the android platform: `ionic cordova add platform android`
 
-Get the camera plugin: `ionic cordova plugin add cordova-plugin-camera` and install it in the project: `npm install --save @ionic-native/camera`.
-
-Import the plugin to the the appModule `app.module.ts`:
+To install the camera plugin do the following:
+- update ionic-native: `npm install @ionic-native/core@5.0.0-beta.14`
+- add the camera tools from ionic-native: `npm install @ionic-native/camera@5.0.0-beta.14 --save`
+- install the plugin: `ionic cordova plugin add cordova-plugin-camera`
+- declare and import it in `app.module.ts`:
 ```ts
 \*...*\
-import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera/ngx';
 \*...*\
 
 @NgModule({
@@ -199,7 +201,7 @@ export class AppModule { }
 On your home page, `home/home.page.ts`, import the camera provider and inject it into the constructor:
 ```ts
 import { Component } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-home',
@@ -218,7 +220,7 @@ On your home page template, `home.page.html`, create a button to take a picture 
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Testing the camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -233,5 +235,36 @@ On your home page template, `home.page.html`, create a button to take a picture 
 ```
 and code the `takePicture()` method and a property `myPicture` to display on the home template:
 ```ts
+import { Component } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+
+  myPicture: any;
+
+  constructor(private camera: Camera) { }
+
+  takePicture(){
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+     this.myPicture = 'data:image/jpeg;base64,' + imageData;
+     console.log("picture taken:", imageData);
+    }, (err) => {
+     console.log("error occured");
+    });
+  }
+
+}
 ```
