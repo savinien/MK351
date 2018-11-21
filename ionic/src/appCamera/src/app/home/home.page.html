@@ -1,17 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      App Camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <button (click)="takePicture()">Take a picture</button>
+  <ion-button shape="round"
+              color="primary"
+              fill="outline"
+              (click)="takePicture()">
+    Take a picture
+  </ion-button>
 
-  <!--
   <div align="center">
-    <img src="{{ myPicture }}" alt="">
+    <ion-img src="{{ myPicture }}"></ion-img>
   </div>
-  -->
+
+<p>{{myPicture}}</p>
+<p>{{error}}</p>
+
+  <ion-button shape="round"
+              color="primary"
+              fill="outline"
+              (click)="test()">
+    Test
+  </ion-button>
+
 </ion-content>
