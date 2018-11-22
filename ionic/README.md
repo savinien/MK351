@@ -5,6 +5,7 @@
 1. [ionic basics](#ionicbas)
 2. [ionic storage](#ionicstore)
 3. [Using the phone camera](#camera)
+4. [Using google maps](#googlemaps)
 
 
 Main reference [ionic documentation](https://ionicframework.com/docs/), in particular the [tutorial](https://ionicframework.com/docs/intro/tutorial/).
@@ -270,3 +271,50 @@ export class HomePage {
 
 }
 ```
+
+<a name="googlemaps"></a>
+## 4. Setup
+- create a blank project `ionic start gmapApp blank --type=angular`
+- `cd gmapApp`
+- add plugin (insert your google map API_KEY): 
+
+`ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="GOOGLE_MAPS_KEY_HERE" --variable API_KEY_FOR_IOS="GOOGLE_MAPS_KEY_HERE"`
+
+- `npm install --save @ionic-native/google-maps`
+- `ionic cordova platform add android`
+- in `platform/android/build.gradle` replace the `buildscript` and `allprojects` by:
+```
+buildscript {
+    repositories {
+        google()
+        maven {
+            url "https://maven.google.com"
+        }
+        jcenter()
+    }
+    dependencies {
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:3.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven {
+            url "https://maven.google.com"
+        }
+        jcenter()
+    }
+    //This replaces project.properties w.r.t. build settings
+    project.ext {
+      defaultBuildToolsVersion="25.0.2" //String
+      defaultMinSdkVersion=19 //Integer - Minimum requirement is Android 4.4
+      defaultTargetSdkVersion=26 //Integer - We ALWAYS target the latest by default
+      defaultCompileSdkVersion=26 //Integer - We ALWAYS compile with the latest by default
+    }
+}
+```
+
