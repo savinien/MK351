@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <p *ngIf="displayList">List of my events</p>
+      <p *ngIf="!displayList">Edition: {{event.title}}</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!--
+  <ion-list *ngIf="displayList">
+    <ion-item *ngFor="let event of events"
+              (click)="editEvent(event)">
+      <ion-label> {{ event.title }} </ion-label>
+    </ion-item>
+  </ion-list>
+-->
+  <ul id="archive" *ngIf="displayList">
+    <li *ngFor="let event of events"
+        (click)="editEvent(event)" >
+        <a>{{ event.title }}</a>
+    </li>
+  </ul>
+
+
+
+  <ion-list *ngIf="!displayList">
+    <ion-item>
+      <ion-input placeholder="{{event.title}}"
+              type="text"
+              [(ngModel)]="modTitle" name="modTitle">
+        {{event.title}}
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="modDescription"
+                    name="modDescription"
+                    placeholder="{{event.description}}"
+                    style="height:150px;">
+        {{event.description}}
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <div>
+        <img src= {{event.pictureURL}}>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div style="text-align:center;" *ngIf="!displayList">
+    <ion-button
+              shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=modifyEventv2(event)>
+              Modify this event
+    </ion-button>
+  </div>
+
+  <div style="text-align:center;" *ngIf="!displayList">
+    <ion-button
+              shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=deleteEvent(event)>
+              Delete this event
+    </ion-button>
+  </div>
+
+  <div style="text-align:center;" *ngIf="!displayList">
+    <ion-button
+              shape="round"
+              color="primary"
+              fill="outline"
+              (click)=backToList()>
+              Go back to my list of events
+    </ion-button>
+  </div>
+
+
+
+
+</ion-content>

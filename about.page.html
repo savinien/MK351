@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Capture my events</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Title of my event"
+              type="text"
+              [(ngModel)]="title" name="title">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="description"
+                    name="description"
+                    placeholder="Description of my event"
+                    style="height:150px;">
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+  <div style="text-align:center;">
+    <ion-button
+              shape="round"
+              color="secondary"
+              block="block button"
+              size="big"
+              (click)=picture()>
+              Take a picture
+    </ion-button>
+  </div>
+  <div style="text-align:center;">
+    <ion-button
+              shape="round"
+              color="light"
+              block="block button"
+              size="small"
+              (click)=store()>
+              Store my event
+    </ion-button>
+  </div>
+</ion-content>
