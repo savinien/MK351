@@ -45,6 +45,9 @@
         <img src= {{event.pictureURL}}>
       </div>
     </ion-item>
+    <ion-item>
+      <p>Longitude: {{ event.coordinates.lat }}, Latitude: {{ event.coordinates.lng }}</p>
+    </ion-item>
   </ion-list>
 
   <div style="text-align:center;" *ngIf="!displayList">

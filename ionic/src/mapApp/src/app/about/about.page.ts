@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var window;
 
@@ -17,20 +18,22 @@ export class AboutPage implements OnInit {
   events: Event[];
   myPicture: string;
   error: string;
+  myLatLng: Coordinates = {lat:null, lng:null};
 
-  constructor(private storage:Storage, private camera: Camera){}
+  constructor(private storage:Storage, private camera: Camera, private geolocation: Geolocation){}
 
   ngOnInit(){
-      this.events = [];
-      this.storage.get('events').then(
-        (val) => {
-          console.log(val);
-          if (val !== null) {
-          this.events = val;
-        };
-          console.log("stored events:", this.events);
-        }
-      );
+    this.loadMap();
+    this.events = [];
+    this.storage.get('events').then(
+      (val) => {
+        console.log(val);
+        if (val !== null) {
+        this.events = val;
+      };
+        console.log("stored events:", this.events);
+      }
+    );
 
   }
 
@@ -55,7 +58,7 @@ export class AboutPage implements OnInit {
 
   store(){
     console.log("storing the event...");
-    let event: Event = {title:"", description:"", pictureURL:""};
+    let event: Event = {title:"", description:"", pictureURL:"", coordinates: this.myLatLng};
     event.title = this.title;
     event.description = this.description;
     console.log(this.myPicture);
@@ -76,11 +79,30 @@ export class AboutPage implements OnInit {
     this.storage.set('events', this.events);
   }
 
+  async loadMap() {
+    this.myLatLng = await this.getLocation();
+    console.log("GPS coordinates: ", this.myLatLng);
+  }
+
+  private async getLocation() {
+    const rta = await this.geolocation.getCurrentPosition();
+    return {
+      lat: rta.coords.latitude,
+      lng: rta.coords.longitude
+    };
+  }
+
 }
 
 export interface Event {
   title: string;
   description: string;
   pictureURL: string;
+  coordinates: Coordinates;
   // add date, gps, picture
+}
+
+export interface Coordinates {
+  lat: number,
+  lng: number
 }

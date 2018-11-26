@@ -34,10 +34,11 @@ export class ContactPage implements OnInit {
 
   modifyEvent(evt){
     console.log("current event edited:", this.event);
-    let ev: Event = {title:"", description:"", pictureURL:""};
+    let ev: Event = {title:"", description:"", pictureURL:"", coordinates: {lat:null, lng:null}};
     ev.title = this.event.title;
     ev.description = this.event.description;
     ev.pictureURL = this.event.pictureURL;
+    ev.coordinates = this.event.coordinates;
     this.eventIndex = this.events.indexOf(this.event);
     this.events[this.eventIndex] = ev;
     this.storage.set('events', this.events);
