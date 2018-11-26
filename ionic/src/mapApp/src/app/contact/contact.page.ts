@@ -13,6 +13,7 @@ export class ContactPage implements OnInit {
   events: Event[];
   event: Event;
   displayList: boolean = true;
+  eventIndex: number;
 
   constructor(private storage:Storage){}
 
@@ -27,7 +28,27 @@ export class ContactPage implements OnInit {
 
   editEvent(evt){
     this.event = evt;
+    console.log("currently edited event:", this.event);
     this.displayList = false;
+  }
+
+  modifyEvent(evt){
+    console.log("current event edited:", this.event);
+    let ev: Event = {title:"", description:"", pictureURL:""};
+    ev.title = this.event.title;
+    ev.description = this.event.description;
+    ev.pictureURL = this.event.pictureURL;
+    this.eventIndex = this.events.indexOf(this.event);
+    this.events[this.eventIndex] = ev;
+    this.storage.set('events', this.events);
+    console.log("event modified: ", this.event);
+  }
+
+  deleteEvent(evt){
+    this.eventIndex = this.events.indexOf(this.event);
+    this.events.splice(this.eventIndex, 1);
+    this.storage.set('events', this.events);
+    this.displayList = true;
   }
 
   backToList(){

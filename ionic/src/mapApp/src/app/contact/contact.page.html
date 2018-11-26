@@ -9,12 +9,22 @@
 
 <ion-content>
 
+  <!--
   <ion-list *ngIf="displayList">
     <ion-item *ngFor="let event of events"
               (click)="editEvent(event)">
       <ion-label> {{ event.title }} </ion-label>
     </ion-item>
   </ion-list>
+-->
+  <ul id="archive" *ngIf="displayList">
+    <li *ngFor="let event of events"
+        (click)="editEvent(event)" >
+        <a>{{ event.title }}</a>
+    </li>
+  </ul>
+
+
 
   <ion-list *ngIf="!displayList">
     <ion-item>
@@ -30,7 +40,32 @@
                     style="height:150px;">
       </ion-textarea>
     </ion-item>
+    <ion-item>
+      <div>
+        <img src= {{event.pictureURL}}>
+      </div>
+    </ion-item>
   </ion-list>
+
+  <div style="text-align:center;" *ngIf="!displayList">
+    <ion-button
+              shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=modifyEvent(event)>
+              Modify this event
+    </ion-button>
+  </div>
+
+  <div style="text-align:center;" *ngIf="!displayList">
+    <ion-button
+              shape="round"
+              color="secondary"
+              fill="outline"
+              (click)=deleteEvent(event)>
+              Delete this event
+    </ion-button>
+  </div>
 
   <div style="text-align:center;" *ngIf="!displayList">
     <ion-button
