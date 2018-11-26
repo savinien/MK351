@@ -14,6 +14,8 @@ export class ContactPage implements OnInit {
   event: Event;
   displayList: boolean = true;
   eventIndex: number;
+  modTitle: string;
+  modDescription: string;
 
   constructor(private storage:Storage){}
 
@@ -34,6 +36,7 @@ export class ContactPage implements OnInit {
 
   modifyEvent(evt){
     console.log("current event edited:", this.event);
+    /*
     let ev: Event = {title:"", description:"", pictureURL:"", coordinates: {lat:null, lng:null}};
     ev.title = this.event.title;
     ev.description = this.event.description;
@@ -43,6 +46,15 @@ export class ContactPage implements OnInit {
     this.events[this.eventIndex] = ev;
     this.storage.set('events', this.events);
     console.log("event modified: ", this.event);
+    */
+    this.event = evt;
+    this.eventIndex = this.events.indexOf(this.event);
+    this.event.title = this.modTitle;
+    this.event.description = this.modDescription;
+    console.log("events: ", this.events, " \n --- \n current event: ", this.event,"\n --- \n current event index: ", this.eventIndex);
+    this.events[this.eventIndex] = this.event;
+    console.log("new event at eventIndex: ", this.events[this.eventIndex]);
+    this.storage.set('events', this.events);
   }
 
   deleteEvent(evt){

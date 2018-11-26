@@ -77,6 +77,8 @@ export class AboutPage implements OnInit {
     }
     console.log("events after push: ", this.events);
     this.storage.set('events', this.events);
+    this.title = "";
+    this.description = "";
   }
 
   async loadMap() {
