@@ -33,7 +33,7 @@ These steps can be done as follows:
 - **clone** a github repo (which initializes git on it): `git clone https://github.com/githubUserId/project.git`. This will create a folder "project" in your working repertory with the remote github project in it. To store the github project into a folder with a different name: `git clone https://github.com/githubUserId/project.git folder_with_different_name`
 - **pull** from github: `git pull`
 - **stage** changes to your local files: `git add my_modified_file`. To stage all files in your repertory: `git add -A`
-- **commit** your changes: `git commit -m "message"` where your leave a precise and concise `message` about what you did. A commit is like a snapshot of your project at a specific time of development.
+- **commit** your changes: `git commit -m "message"` where your leave a precise and concise `message` about what you did. A commit is like a snapshot of your project at a specific time of development. If commit message is rather long and detailed, it can be put into a text file, like `.gitmessage.txt`, and commit is performed as `git commit -F .gitmessage.txt`.
 - **push** your work (latest commit) back to github: `git push`. If you want to push a specific branch only: `git push origin branch_name`, where `branch_name` is the name of your branch (has to be the same name in your machine than on github), and `origin` stands for your project on github.
 
 Git offers much more than these basic operations. Commits and especially pushs have to be *carefully coordinated* with your collaborators to avoid conflicts...
